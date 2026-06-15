@@ -13,6 +13,10 @@
   font-family:Arial, Helvetica, sans-serif;
 }
 
+html{
+  scroll-behavior:smooth;
+}
+
 body{
   background:#f4f7fb;
   color:#111827;
@@ -21,54 +25,67 @@ body{
 header{
   background:#0f172a;
   color:white;
-  padding:24px 20px;
-  text-align:center;
+  padding:22px 40px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:sticky;
+  top:0;
+  z-index:100;
 }
 
-header h2{
-  font-size:32px;
-  margin-bottom:8px;
+.logo{
+  font-size:30px;
+  font-weight:800;
 }
 
-header p{
-  font-size:18px;
+nav a{
+  color:white;
+  text-decoration:none;
+  margin-left:22px;
+  font-weight:600;
 }
 
 .hero{
-  background:linear-gradient(135deg,#0f172a,#2563eb);
+  background:linear-gradient(135deg,#0f172a,#1d4ed8,#2563eb);
   color:white;
   text-align:center;
-  padding:110px 30px;
+  padding:120px 30px;
 }
 
 .hero h1{
-  font-size:72px;
+  font-size:78px;
   margin-bottom:18px;
-  letter-spacing:2px;
+  letter-spacing:3px;
 }
 
-.hero h3{
-  font-size:30px;
+.hero h2{
+  font-size:34px;
   margin-bottom:25px;
   font-weight:500;
 }
 
 .hero p{
-  font-size:21px;
-  max-width:900px;
+  font-size:22px;
+  max-width:950px;
   margin:0 auto 35px auto;
   line-height:1.7;
 }
 
 .btn{
   display:inline-block;
-  padding:14px 30px;
+  padding:15px 32px;
   margin:8px;
   background:white;
   color:#0f172a;
   text-decoration:none;
   border-radius:40px;
   font-weight:bold;
+  transition:0.3s;
+}
+
+.btn:hover{
+  transform:translateY(-3px);
 }
 
 .btn-blue{
@@ -77,14 +94,23 @@ header p{
 }
 
 .section{
-  max-width:1180px;
+  max-width:1200px;
   margin:auto;
-  padding:70px 30px;
+  padding:75px 30px;
 }
 
 .section h2{
-  font-size:34px;
-  margin-bottom:28px;
+  font-size:36px;
+  margin-bottom:30px;
+  text-align:center;
+}
+
+.section-intro{
+  max-width:900px;
+  margin:0 auto 40px auto;
+  text-align:center;
+  font-size:20px;
+  line-height:1.7;
 }
 
 .cards{
@@ -95,9 +121,14 @@ header p{
 
 .card{
   background:white;
-  padding:28px;
-  border-radius:18px;
-  box-shadow:0 8px 22px rgba(0,0,0,0.08);
+  padding:30px;
+  border-radius:20px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.08);
+  transition:0.3s;
+}
+
+.card:hover{
+  transform:translateY(-6px);
 }
 
 .card h3{
@@ -113,18 +144,25 @@ header p{
 
 .mission{
   background:white;
-  text-align:center;
+  max-width:none;
 }
 
-.mission p{
-  max-width:950px;
+.mission-box{
+  max-width:1000px;
   margin:auto;
+  text-align:center;
   font-size:22px;
   line-height:1.8;
 }
 
 .gems{
   background:#eef2ff;
+  max-width:none;
+}
+
+.gems-inner{
+  max-width:1200px;
+  margin:auto;
 }
 
 .badge{
@@ -138,43 +176,70 @@ header p{
   margin-bottom:14px;
 }
 
+.feed{
+  background:#f8fafc;
+}
+
 .post{
   background:white;
-  padding:24px;
-  border-radius:18px;
-  margin-bottom:18px;
-  box-shadow:0 8px 22px rgba(0,0,0,0.08);
+  padding:28px;
+  border-radius:20px;
+  margin-bottom:20px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.08);
 }
 
 .post h3{
-  margin-bottom:10px;
-  color:#111827;
+  margin-bottom:8px;
+  font-size:22px;
+}
+
+.post small{
+  color:#64748b;
 }
 
 .post p{
+  margin-top:14px;
   font-size:17px;
   line-height:1.6;
 }
 
 .actions{
-  margin-top:15px;
+  margin-top:18px;
 }
 
 .action{
   display:inline-block;
   background:#2563eb;
   color:white;
-  padding:9px 16px;
+  padding:9px 17px;
   border-radius:30px;
   margin-right:8px;
   font-size:14px;
+  font-weight:bold;
+}
+
+.impact{
+  background:#0f172a;
+  color:white;
+  max-width:none;
+}
+
+.impact-inner{
+  max-width:1100px;
+  margin:auto;
+  text-align:center;
+}
+
+.impact p{
+  font-size:21px;
+  line-height:1.8;
 }
 
 footer{
-  background:#0f172a;
+  background:#020617;
   color:white;
   text-align:center;
-  padding:45px 20px;
+  padding:50px 20px;
 }
 
 footer h3{
@@ -184,15 +249,26 @@ footer h3{
 
 footer p{
   font-size:17px;
+  margin-bottom:8px;
 }
 
-@media(max-width:700px){
-  .hero h1{
-    font-size:52px;
+@media(max-width:800px){
+  header{
+    flex-direction:column;
+    gap:15px;
   }
 
-  .hero h3{
-    font-size:24px;
+  nav a{
+    display:inline-block;
+    margin:6px;
+  }
+
+  .hero h1{
+    font-size:54px;
+  }
+
+  .hero h2{
+    font-size:26px;
   }
 
   .hero p{
@@ -205,32 +281,44 @@ footer p{
 <body>
 
 <header>
-  <h2>JACI</h2>
-  <p>The Home of Knowledge Creators</p>
+  <div class="logo">JACI</div>
+  <nav>
+    <a href="#mission">Мисия</a>
+    <a href="#ideas">Идеи</a>
+    <a href="#gems">Hidden Gems</a>
+    <a href="#feed">Feed</a>
+    <a href="#impact">Impact Score</a>
+  </nav>
 </header>
 
 <section class="hero">
   <h1>JACI</h1>
-  <h3>The Home of Knowledge Creators</h3>
+  <h2>The Home of Knowledge Creators</h2>
   <p>
     JACI открива, признава и развива хората, които създават стойност чрез знания, идеи и принос.
   </p>
-  <a class="btn" href="#">Присъедини се</a>
-  <a class="btn btn-blue" href="#">Разгледай идеи</a>
+  <a class="btn" href="#feed">Присъедини се</a>
+  <a class="btn btn-blue" href="#ideas">Разгледай идеи</a>
 </section>
 
-<section class="section mission">
+<section class="section mission" id="mission">
   <h2>Мисията на JACI</h2>
-  <p>
-    Талантът е навсякъде. Признанието също трябва да бъде.
-    JACI създава дигитална среда, в която учени, преподаватели, експерти,
-    иноватори и създатели на съдържание могат да получат видимост,
-    доверие и нови възможности за развитие.
-  </p>
+  <div class="mission-box">
+    <p>
+      Талантът е навсякъде. Признанието също трябва да бъде.
+      JACI създава дигитална среда, в която учени, преподаватели, експерти,
+      иноватори и създатели на съдържание могат да получат видимост,
+      доверие и нови възможности за развитие.
+    </p>
+  </div>
 </section>
 
-<section class="section">
+<section class="section" id="ideas">
   <h2>Защо JACI?</h2>
+  <p class="section-intro">
+    JACI не е просто социална мрежа. Това е платформа за хора, които създават знания,
+    развиват идеи и търсят признание за реалния си принос.
+  </p>
 
   <div class="cards">
     <div class="card">
@@ -243,7 +331,7 @@ footer p{
     <div class="card">
       <h3>Recognition</h3>
       <p>
-        Система за признание на хора, които създават реална стойност чрез своя труд и принос.
+        Система за признание на хора, които създават реална стойност чрез труд, знание и принос.
       </p>
     </div>
 
@@ -253,79 +341,125 @@ footer p{
         Интелигентен асистент, който подпомага развитието, ученето и откриването на възможности.
       </p>
     </div>
-  </div>
-</section>
 
-<section class="section gems">
-  <h2>Hidden Gems на седмицата</h2>
-
-  <div class="cards">
     <div class="card">
-      <span class="badge">Учен на седмицата</span>
-      <h3>Hidden Scientist</h3>
+      <h3>Knowledge Creators</h3>
       <p>
-        Изследовател с ценен принос, който заслужава по-голяма публичност и признание.
+        Общност от учени, преподаватели, експерти, автори, ментори и създатели на стойностно съдържание.
       </p>
     </div>
 
     <div class="card">
-      <span class="badge">Преподавател на седмицата</span>
-      <h3>Inspiring Teacher</h3>
+      <h3>Opportunities</h3>
       <p>
-        Преподавател, който развива хората чрез знания, менторство и подкрепа.
+        Свързване на идеи, хора, проекти и възможности за развитие.
       </p>
     </div>
 
     <div class="card">
-      <span class="badge">Иноватор на седмицата</span>
-      <h3>Knowledge Innovator</h3>
+      <h3>Community</h3>
       <p>
-        Създател на идея, проект или решение с потенциал за обществена стойност.
+        Среда за подкрепа, сътрудничество и взаимно израстване.
       </p>
     </div>
   </div>
 </section>
 
-<section class="section">
+<section class="section gems" id="gems">
+  <div class="gems-inner">
+    <h2>Hidden Gems на седмицата</h2>
+    <p class="section-intro">
+      JACI дава публичност на стойностни хора, които често остават извън вниманието на традиционните мрежи.
+    </p>
+
+    <div class="cards">
+      <div class="card">
+        <span class="badge">Учен на седмицата</span>
+        <h3>Hidden Scientist</h3>
+        <p>
+          Изследовател с ценен принос, който заслужава по-голяма публичност и признание.
+        </p>
+      </div>
+
+      <div class="card">
+        <span class="badge">Преподавател на седмицата</span>
+        <h3>Inspiring Teacher</h3>
+        <p>
+          Преподавател, който развива хората чрез знания, менторство и подкрепа.
+        </p>
+      </div>
+
+      <div class="card">
+        <span class="badge">Иноватор на седмицата</span>
+        <h3>Knowledge Innovator</h3>
+        <p>
+          Създател на идея, проект или решение с потенциал за обществена стойност.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section feed" id="feed">
   <h2>JACI Feed</h2>
+  <p class="section-intro">
+    Първият демонстрационен поток на JACI – място за идеи, принос и признание.
+  </p>
 
   <div class="post">
     <h3>Georgi Nikolov</h3>
+    <small>Founder · Knowledge Creator</small>
     <p>
       JACI е платформа за Knowledge Creators – хора, които създават стойност чрез знания, идеи и принос.
     </p>
     <div class="actions">
       <span class="action">Useful</span>
       <span class="action">Comment</span>
+      <span class="action">Recognize</span>
     </div>
   </div>
 
   <div class="post">
     <h3>Hidden Scientist</h3>
+    <small>Researcher · Hidden Gem</small>
     <p>
       В света има много стойностни учени, които заслужават повече видимост и признание за своята работа.
     </p>
     <div class="actions">
       <span class="action">Useful</span>
       <span class="action">Comment</span>
+      <span class="action">Recognize</span>
     </div>
   </div>
 
   <div class="post">
     <h3>Knowledge Creator</h3>
+    <small>Author · Educator · Creator</small>
     <p>
       Споделям идея, проект или знание, което може да бъде полезно за други хора и общности.
     </p>
     <div class="actions">
       <span class="action">Useful</span>
       <span class="action">Comment</span>
+      <span class="action">Recognize</span>
     </div>
+  </div>
+</section>
+
+<section class="section impact" id="impact">
+  <div class="impact-inner">
+    <h2>JACI Impact Score</h2>
+    <p>
+      JACI Impact Score ще измерва не популярността, а реалния принос:
+      знания, иновации, менторство, общностна подкрепа и създадена стойност.
+    </p>
   </div>
 </section>
 
 <footer>
   <h3>Основател: Георги Николов</h3>
   <p>JACI е платформа за знания, признание и развитие.</p>
+  <p>The Home of Knowledge Creators</p>
 </footer>
 
 </body>
