@@ -1,71 +1,331 @@
 <!DOCTYPE html>
-<html>
+<html lang="bg">
 <head>
-<title>JACI</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JACI | The Home of Knowledge Creators</title>
+
 <style>
-body{margin:0;font-family:Arial;background:#f5f7fb;color:#222}
-header{background:#0f172a;color:white;text-align:center;padding:25px}
-.hero{background:linear-gradient(135deg,#0f172a,#2563eb);color:white;text-align:center;padding:90px 30px}
-.hero h1{font-size:60px}
-.section{padding:50px 30px;max-width:1100px;margin:auto}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
-.card,.post{background:white;padding:25px;border-radius:16px;box-shadow:0 6px 18px rgba(0,0,0,.1)}
-.post{margin-bottom:20px}
-.btn{display:inline-block;margin:8px 8px 0 0;padding:10px 18px;border-radius:30px;background:#2563eb;color:white;text-decoration:none}
-footer{background:#0f172a;color:white;text-align:center;padding:35px}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+  background:#f4f7fb;
+  color:#111827;
+}
+
+header{
+  background:#0f172a;
+  color:white;
+  padding:24px 20px;
+  text-align:center;
+}
+
+header h2{
+  font-size:32px;
+  margin-bottom:8px;
+}
+
+header p{
+  font-size:18px;
+}
+
+.hero{
+  background:linear-gradient(135deg,#0f172a,#2563eb);
+  color:white;
+  text-align:center;
+  padding:110px 30px;
+}
+
+.hero h1{
+  font-size:72px;
+  margin-bottom:18px;
+  letter-spacing:2px;
+}
+
+.hero h3{
+  font-size:30px;
+  margin-bottom:25px;
+  font-weight:500;
+}
+
+.hero p{
+  font-size:21px;
+  max-width:900px;
+  margin:0 auto 35px auto;
+  line-height:1.7;
+}
+
+.btn{
+  display:inline-block;
+  padding:14px 30px;
+  margin:8px;
+  background:white;
+  color:#0f172a;
+  text-decoration:none;
+  border-radius:40px;
+  font-weight:bold;
+}
+
+.btn-blue{
+  background:#2563eb;
+  color:white;
+}
+
+.section{
+  max-width:1180px;
+  margin:auto;
+  padding:70px 30px;
+}
+
+.section h2{
+  font-size:34px;
+  margin-bottom:28px;
+}
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:24px;
+}
+
+.card{
+  background:white;
+  padding:28px;
+  border-radius:18px;
+  box-shadow:0 8px 22px rgba(0,0,0,0.08);
+}
+
+.card h3{
+  font-size:24px;
+  margin-bottom:14px;
+  color:#1d4ed8;
+}
+
+.card p{
+  font-size:17px;
+  line-height:1.6;
+}
+
+.mission{
+  background:white;
+  text-align:center;
+}
+
+.mission p{
+  max-width:950px;
+  margin:auto;
+  font-size:22px;
+  line-height:1.8;
+}
+
+.gems{
+  background:#eef2ff;
+}
+
+.badge{
+  display:inline-block;
+  background:#dbeafe;
+  color:#1e40af;
+  padding:7px 14px;
+  border-radius:30px;
+  font-size:14px;
+  font-weight:bold;
+  margin-bottom:14px;
+}
+
+.post{
+  background:white;
+  padding:24px;
+  border-radius:18px;
+  margin-bottom:18px;
+  box-shadow:0 8px 22px rgba(0,0,0,0.08);
+}
+
+.post h3{
+  margin-bottom:10px;
+  color:#111827;
+}
+
+.post p{
+  font-size:17px;
+  line-height:1.6;
+}
+
+.actions{
+  margin-top:15px;
+}
+
+.action{
+  display:inline-block;
+  background:#2563eb;
+  color:white;
+  padding:9px 16px;
+  border-radius:30px;
+  margin-right:8px;
+  font-size:14px;
+}
+
+footer{
+  background:#0f172a;
+  color:white;
+  text-align:center;
+  padding:45px 20px;
+}
+
+footer h3{
+  margin-bottom:12px;
+  font-size:24px;
+}
+
+footer p{
+  font-size:17px;
+}
+
+@media(max-width:700px){
+  .hero h1{
+    font-size:52px;
+  }
+
+  .hero h3{
+    font-size:24px;
+  }
+
+  .hero p{
+    font-size:18px;
+  }
+}
 </style>
 </head>
 
 <body>
 
 <header>
-<h2>JACI</h2>
-<p>Learn. Connect. Build.</p>
+  <h2>JACI</h2>
+  <p>The Home of Knowledge Creators</p>
 </header>
 
 <section class="hero">
-<h1>JACI</h1>
-<p>The Social Network for Growth</p>
+  <h1>JACI</h1>
+  <h3>The Home of Knowledge Creators</h3>
+  <p>
+    JACI открива, признава и развива хората, които създават стойност чрез знания, идеи и принос.
+  </p>
+  <a class="btn" href="#">Присъедини се</a>
+  <a class="btn btn-blue" href="#">Разгледай идеи</a>
+</section>
+
+<section class="section mission">
+  <h2>Мисията на JACI</h2>
+  <p>
+    Талантът е навсякъде. Признанието също трябва да бъде.
+    JACI създава дигитална среда, в която учени, преподаватели, експерти,
+    иноватори и създатели на съдържание могат да получат видимост,
+    доверие и нови възможности за развитие.
+  </p>
 </section>
 
 <section class="section">
-<h2>Why JACI?</h2>
-<div class="cards">
-<div class="card"><h3>JACI Feed</h3><p>Ideas, videos and inspiring content.</p></div>
-<div class="card"><h3>JACI Business</h3><p>Find partners, clients and opportunities.</p></div>
-<div class="card"><h3>JACI AI</h3><p>Your personal growth assistant.</p></div>
-</div>
+  <h2>Защо JACI?</h2>
+
+  <div class="cards">
+    <div class="card">
+      <h3>JACI Feed</h3>
+      <p>
+        Поток от идеи, знания, кратки публикации, видеа и вдъхновяващо съдържание.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Recognition</h3>
+      <p>
+        Система за признание на хора, които създават реална стойност чрез своя труд и принос.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>JACI AI</h3>
+      <p>
+        Интелигентен асистент, който подпомага развитието, ученето и откриването на възможности.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section gems">
+  <h2>Hidden Gems на седмицата</h2>
+
+  <div class="cards">
+    <div class="card">
+      <span class="badge">Учен на седмицата</span>
+      <h3>Hidden Scientist</h3>
+      <p>
+        Изследовател с ценен принос, който заслужава по-голяма публичност и признание.
+      </p>
+    </div>
+
+    <div class="card">
+      <span class="badge">Преподавател на седмицата</span>
+      <h3>Inspiring Teacher</h3>
+      <p>
+        Преподавател, който развива хората чрез знания, менторство и подкрепа.
+      </p>
+    </div>
+
+    <div class="card">
+      <span class="badge">Иноватор на седмицата</span>
+      <h3>Knowledge Innovator</h3>
+      <p>
+        Създател на идея, проект или решение с потенциал за обществена стойност.
+      </p>
+    </div>
+  </div>
 </section>
 
 <section class="section">
-<h2>JACI Feed</h2>
+  <h2>JACI Feed</h2>
 
-<div class="post">
-<h3>Georgi Nikolov</h3>
-<p>JACI is a platform where knowledge creators receive recognition, visibility and opportunities.</p>
-<a class="btn" href="#">Useful</a>
-<a class="btn" href="#">Comment</a>
-</div>
+  <div class="post">
+    <h3>Georgi Nikolov</h3>
+    <p>
+      JACI е платформа за Knowledge Creators – хора, които създават стойност чрез знания, идеи и принос.
+    </p>
+    <div class="actions">
+      <span class="action">Useful</span>
+      <span class="action">Comment</span>
+    </div>
+  </div>
 
-<div class="post">
-<h3>Hidden Scientist</h3>
-<p>There are many valuable researchers in the world who deserve more public recognition for their work.</p>
-<a class="btn" href="#">Useful</a>
-<a class="btn" href="#">Comment</a>
-</div>
+  <div class="post">
+    <h3>Hidden Scientist</h3>
+    <p>
+      В света има много стойностни учени, които заслужават повече видимост и признание за своята работа.
+    </p>
+    <div class="actions">
+      <span class="action">Useful</span>
+      <span class="action">Comment</span>
+    </div>
+  </div>
 
-<div class="post">
-<h3>Startup Creator</h3>
-<p>I am looking for partners to develop an AI-based educational and business platform.</p>
-<a class="btn" href="#">Useful</a>
-<a class="btn" href="#">Comment</a>
-</div>
-
+  <div class="post">
+    <h3>Knowledge Creator</h3>
+    <p>
+      Споделям идея, проект или знание, което може да бъде полезно за други хора и общности.
+    </p>
+    <div class="actions">
+      <span class="action">Useful</span>
+      <span class="action">Comment</span>
+    </div>
+  </div>
 </section>
 
 <footer>
-<h3>Founder: Georgi Nikolov</h3>
-<p>JACI is a platform for growth, recognition, innovation and entrepreneurship.</p>
+  <h3>Основател: Георги Николов</h3>
+  <p>JACI е платформа за знания, признание и развитие.</p>
 </footer>
 
 </body>
