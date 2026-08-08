@@ -293,7 +293,7 @@ footer p{
   <h1>Join JACI</h1>
 
   <p>
-    Създайте първия си JACI Profile и покажете каква стойност създавате чрез знания, идеи и принос.
+    Създайте своя JACI Profile и покажете каква стойност създавате чрез знания, идеи и принос.
   </p>
 </section>
 
@@ -358,7 +358,7 @@ footer p{
         </div>
 
         <div class="form-group">
-          <label for="bio">Кратко представяне</label>
+          <label for="bio">Professional Story</label>
 
           <textarea
             id="bio"
@@ -452,6 +452,7 @@ footer p{
 
 const nameInput = document.getElementById("name");
 const countryInput = document.getElementById("country");
+const emailInput = document.getElementById("email");
 const organizationInput = document.getElementById("organization");
 const creatorTypeInput = document.getElementById("creatorType");
 const fieldInput = document.getElementById("field");
@@ -506,7 +507,6 @@ function updatePreview(){
     : "KC";
 
   document.getElementById("previewAvatar").textContent = initials;
-
 }
 
 [
@@ -518,26 +518,31 @@ function updatePreview(){
   bioInput,
   contributionInput
 ].forEach(function(element){
-
   element.addEventListener("input", updatePreview);
   element.addEventListener("change", updatePreview);
-
 });
 
 document.getElementById("joinForm").addEventListener("submit", function(event){
 
   event.preventDefault();
 
-  updatePreview();
+  const profileData = {
+    name: nameInput.value.trim(),
+    country: countryInput.value.trim(),
+    email: emailInput.value.trim(),
+    organization: organizationInput.value.trim(),
+    creatorType: creatorTypeInput.value,
+    field: fieldInput.value.trim(),
+    bio: bioInput.value.trim(),
+    contribution: contributionInput.value.trim()
+  };
 
-  const name = nameInput.value.trim();
-
-  alert(
-    "Добре дошли в JACI, " +
-    name +
-    "! Това е визуален preview на Вашия бъдещ профил."
+  localStorage.setItem(
+    "jaciProfile",
+    JSON.stringify(profileData)
   );
 
+  window.location.href = "profile.html";
 });
 
 </script>
