@@ -262,6 +262,26 @@ nav a:hover{
     margin-top:15px;
 }
 
+.empty-profile{
+    max-width:800px;
+    margin:60px auto;
+    background:white;
+    padding:40px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+.empty-profile h1{
+    margin-bottom:15px;
+}
+
+.empty-profile p{
+    line-height:1.7;
+    margin-bottom:22px;
+    color:#475569;
+}
+
 footer{
     background:#020617;
     color:white;
@@ -329,6 +349,8 @@ footer p{
 
 <div class="cover"></div>
 
+<div id="profileContent">
+
 <main class="profile-container">
 
     <section class="profile-header">
@@ -367,7 +389,6 @@ footer p{
 
     </section>
 
-
     <div class="content-grid">
 
         <div>
@@ -376,13 +397,9 @@ footer p{
 
                 <h2>Professional Story</h2>
 
-                <p id="profileBio">
-                    Your Professional Story will present your knowledge,
-                    experience and the path through which you create value.
-                </p>
+                <p id="profileBio"></p>
 
             </section>
-
 
             <section class="card" id="contributions">
 
@@ -394,13 +411,11 @@ footer p{
                         FIRST CONTRIBUTION
                     </div>
 
-                    <h3 id="contributionTitle">
+                    <h3>
                         My contribution to knowledge
                     </h3>
 
-                    <p id="profileContribution">
-                        Your first contribution will appear here.
-                    </p>
+                    <p id="profileContribution"></p>
 
                     <div class="actions">
 
@@ -421,7 +436,6 @@ footer p{
                 </div>
 
             </section>
-
 
             <section class="card">
 
@@ -460,19 +474,23 @@ footer p{
 
         </div>
 
-
         <aside>
 
             <section class="card">
 
                 <h2>Area of Expertise</h2>
 
-                <div id="expertiseTags">
-                    <span class="tag">Knowledge Creator</span>
-                </div>
+                <div id="expertiseTags"></div>
 
             </section>
 
+            <section class="card">
+
+                <h2>Organization</h2>
+
+                <p id="profileOrganization"></p>
+
+            </section>
 
             <section class="card">
 
@@ -486,7 +504,6 @@ footer p{
 
             </section>
 
-
             <section class="card principle">
 
                 <h2>JACI Principle</h2>
@@ -499,14 +516,13 @@ footer p{
 
             </section>
 
-
             <section class="card">
 
                 <h2>Profile</h2>
 
                 <p>
-                    This is currently a demonstration profile.
-                    Permanent accounts will be introduced in a future version.
+                    This profile is currently stored locally in your browser
+                    as part of the JACI demonstration version.
                 </p>
 
                 <a class="edit-button" href="join.html">
@@ -521,6 +537,25 @@ footer p{
 
 </main>
 
+</div>
+
+<div id="emptyProfile" style="display:none;">
+
+    <div class="empty-profile">
+
+        <h1>No JACI Profile Yet</h1>
+
+        <p>
+            Create your first JACI Profile and begin building your Professional Story.
+        </p>
+
+        <a class="edit-button" href="join.html">
+            Join JACI
+        </a>
+
+    </div>
+
+</div>
 
 <footer>
 
@@ -532,15 +567,97 @@ footer p{
 
 </footer>
 
-
 <script>
+
+const storedProfile = localStorage.getItem("jaciProfile");
+
+if(storedProfile){
+
+    const profile = JSON.parse(storedProfile);
+
+    document.getElementById("profileName").textContent =
+        profile.name || "Knowledge Creator";
+
+    document.getElementById("profileRole").textContent =
+        profile.creatorType || "Knowledge Creator";
+
+    let meta = [];
+
+    if(profile.country){
+        meta.push(profile.country);
+    }
+
+    if(profile.organization){
+        meta.push(profile.organization);
+    }
+
+    document.getElementById("profileMeta").textContent =
+        meta.length ? meta.join(" · ") : "JACI Member";
+
+    document.getElementById("profileBio").textContent =
+        profile.bio || "Professional Story coming soon.";
+
+    document.getElementById("profileContribution").textContent =
+        profile.contribution || "Contribution coming soon.";
+
+    document.getElementById("profileOrganization").textContent =
+        profile.organization || "Independent Knowledge Creator";
+
+    const expertiseBox =
+        document.getElementById("expertiseTags");
+
+    expertiseBox.innerHTML = "";
+
+    if(profile.field){
+
+        const tag = document.createElement("span");
+
+        tag.className = "tag";
+
+        tag.textContent = profile.field;
+
+        expertiseBox.appendChild(tag);
+    }
+
+    if(profile.creatorType){
+
+        const tag = document.createElement("span");
+
+        tag.className = "tag";
+
+        tag.textContent = profile.creatorType;
+
+        expertiseBox.appendChild(tag);
+    }
+
+    const initials =
+        profile.name
+        ? profile.name
+            .split(" ")
+            .filter(Boolean)
+            .slice(0,2)
+            .map(word => word[0])
+            .join("")
+            .toUpperCase()
+        : "KC";
+
+    document.getElementById("profileAvatar").textContent =
+        initials;
+
+}else{
+
+    document.getElementById("profileContent").style.display =
+        "none";
+
+    document.getElementById("emptyProfile").style.display =
+        "block";
+}
 
 function recognize(){
 
     alert(
         "Recognition recorded — demonstration version."
     );
-
 }
 
 function demoAction(){
@@ -548,7 +665,6 @@ function demoAction(){
     alert(
         "This feature will be activated in a future JACI version."
     );
-
 }
 
 </script>
