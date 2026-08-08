@@ -11,10 +11,12 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial, Helvetica, sans-serif;
+    font-family:Arial,Helvetica,sans-serif;
 }
 
-html{scroll-behavior:smooth;}
+html{
+    scroll-behavior:smooth;
+}
 
 body{
     background:#f4f7fb;
@@ -45,6 +47,10 @@ nav a{
     text-decoration:none;
     margin-left:20px;
     font-weight:600;
+}
+
+nav a:hover{
+    color:#93c5fd;
 }
 
 .cover{
@@ -97,29 +103,42 @@ nav a{
 
 .meta{
     color:#64748b;
+    line-height:1.6;
 }
 
 .recognition-box{
     text-align:center;
     background:#0f172a;
     color:white;
-    padding:20px 25px;
+    padding:22px 25px;
     border-radius:18px;
-    min-width:170px;
+    min-width:190px;
 }
 
 .recognition-number{
-    font-size:44px;
+    font-size:46px;
     color:#93c5fd;
     font-weight:800;
 }
 
 .recognition-label{
     font-weight:700;
+    margin-bottom:12px;
 }
 
-.recognition-box small{
-    color:#cbd5e1;
+.recognize-creator{
+    border:none;
+    background:#2563eb;
+    color:white;
+    padding:10px 16px;
+    border-radius:25px;
+    font-weight:700;
+    cursor:pointer;
+    margin-top:12px;
+}
+
+.recognize-creator:hover{
+    background:#1d4ed8;
 }
 
 .content-grid{
@@ -170,12 +189,16 @@ nav a{
     margin-bottom:20px;
 }
 
+.add-button:hover{
+    background:#1d4ed8;
+}
+
 .contribution{
     border-top:1px solid #e5e7eb;
     padding:24px 0;
 }
 
-.contribution:first-of-type{
+.contribution:first-child{
     border-top:none;
 }
 
@@ -196,10 +219,6 @@ nav a{
 .contribution h3{
     font-size:20px;
     margin-bottom:8px;
-}
-
-.contribution p{
-    font-size:16px;
 }
 
 .contribution-link{
@@ -239,22 +258,9 @@ nav a{
 }
 
 .recognition-count{
-    font-size:14px;
     color:#475569;
+    font-size:14px;
     font-weight:700;
-    margin-left:4px;
-}
-
-.recognition-summary{
-    background:linear-gradient(135deg,#eff6ff,#dbeafe);
-    border-left:4px solid #2563eb;
-}
-
-.summary-number{
-    font-size:46px;
-    font-weight:800;
-    color:#1d4ed8;
-    margin-bottom:5px;
 }
 
 .empty-contributions{
@@ -264,6 +270,26 @@ nav a{
     border-radius:14px;
     text-align:center;
     color:#64748b;
+}
+
+.recognition-summary{
+    background:linear-gradient(135deg,#eff6ff,#dbeafe);
+    border-left:4px solid #2563eb;
+}
+
+.summary-number{
+    font-size:48px;
+    font-weight:800;
+    color:#1d4ed8;
+}
+
+.recognition-detail{
+    margin-top:15px;
+    padding-top:15px;
+    border-top:1px solid #bfdbfe;
+    font-size:14px;
+    line-height:1.8;
+    color:#475569;
 }
 
 .timeline-item{
@@ -294,10 +320,6 @@ nav a{
     margin-bottom:5px;
 }
 
-.timeline-item p{
-    font-size:15px;
-}
-
 .principle{
     background:#eff6ff;
     border-left:4px solid #2563eb;
@@ -315,6 +337,15 @@ nav a{
     margin-top:15px;
 }
 
+.empty-profile{
+    max-width:800px;
+    margin:60px auto;
+    background:white;
+    padding:40px;
+    border-radius:20px;
+    text-align:center;
+}
+
 footer{
     background:#020617;
     color:white;
@@ -322,7 +353,9 @@ footer{
     padding:45px 20px;
 }
 
-footer p{margin:6px;}
+footer p{
+    margin:6px;
+}
 
 @media(max-width:850px){
 
@@ -331,7 +364,9 @@ footer p{margin:6px;}
         gap:12px;
     }
 
-    nav{text-align:center;}
+    nav{
+        text-align:center;
+    }
 
     nav a{
         display:inline-block;
@@ -343,10 +378,11 @@ footer p{margin:6px;}
         text-align:center;
     }
 
-    .avatar{margin:auto;}
+    .avatar{
+        margin:auto;
+    }
 
     .recognition-box{
-        max-width:220px;
         margin:auto;
     }
 
@@ -376,6 +412,8 @@ footer p{margin:6px;}
 
 <div class="cover"></div>
 
+<div id="profileContent">
+
 <main class="profile-container">
 
 <section class="profile-header">
@@ -384,7 +422,9 @@ footer p{margin:6px;}
 
 <div class="identity">
 
-<h1 id="profileName">Knowledge Creator</h1>
+<h1 id="profileName">
+Knowledge Creator
+</h1>
 
 <div class="role" id="profileRole">
 JACI Member
@@ -398,17 +438,19 @@ The Home of Knowledge Creators
 
 <div class="recognition-box">
 
-<div class="recognition-number" id="totalRecognition">
+<div class="recognition-number" id="headerRecognition">
 0
 </div>
 
 <div class="recognition-label">
-Recognitions
+Total Recognition
 </div>
 
-<small>
-Received for contributions
-</small>
+<button
+class="recognize-creator"
+onclick="recognizeCreator()">
+Recognize Creator
+</button>
 
 </div>
 
@@ -470,7 +512,7 @@ Recognition
 <h3>Contribution becomes visible</h3>
 
 <p>
-Recognition reflects appreciation for meaningful
+Recognition represents appreciation for meaningful
 knowledge, ideas, innovation and social contribution.
 </p>
 
@@ -483,17 +525,37 @@ knowledge, ideas, innovation and social contribution.
 
 <aside>
 
-<section class="card recognition-summary" id="recognition">
+<section
+class="card recognition-summary"
+id="recognition">
 
 <h2>Recognition</h2>
 
-<div class="summary-number" id="summaryRecognition">
+<div
+class="summary-number"
+id="summaryRecognition">
 0
 </div>
 
 <p>
-Total recognitions received across all Contributions.
+Total Recognition received in JACI.
 </p>
+
+<div class="recognition-detail">
+
+Creator Recognition:
+<strong id="creatorRecognition">
+0
+</strong>
+
+<br>
+
+Contribution Recognition:
+<strong id="contributionRecognition">
+0
+</strong>
+
+</div>
 
 </section>
 
@@ -555,8 +617,9 @@ Our mission is to make contribution visible.
 <h2>JACI Score</h2>
 
 <p>
-The JACI Score methodology is currently under development.
-Recognition will be one of its future dimensions.
+The JACI Score methodology is under development.
+Recognition will be one of its future dimensions,
+but JACI Score will not be based simply on popularity.
 </p>
 
 </section>
@@ -566,7 +629,9 @@ Recognition will be one of its future dimensions.
 
 <h2>Profile</h2>
 
-<a class="edit-button" href="join.html">
+<a
+class="edit-button"
+href="join.html">
 Edit Profile
 </a>
 
@@ -578,6 +643,32 @@ Edit Profile
 
 </main>
 
+</div>
+
+
+<div
+id="emptyProfile"
+style="display:none">
+
+<div class="empty-profile">
+
+<h1>No JACI Profile Yet</h1>
+
+<p>
+Create your JACI Profile and begin building
+your Professional Story.
+</p>
+
+<a
+class="edit-button"
+href="join.html">
+Join JACI
+</a>
+
+</div>
+
+</div>
+
 
 <footer>
 
@@ -585,102 +676,186 @@ Edit Profile
 
 <p>The Home of Knowledge Creators</p>
 
-<p>Our mission is to make contribution visible.</p>
+<p>
+Our mission is to make contribution visible.
+</p>
 
 </footer>
 
 
 <script>
 
-/* ---------------- PROFILE ---------------- */
+/* =========================
+   PROFILE
+========================= */
 
-const storedProfile =
-localStorage.getItem("jaciProfile");
+function getProfile(){
 
-if(storedProfile){
+    const stored =
+        localStorage.getItem("jaciProfile");
+
+    if(!stored){
+        return null;
+    }
 
     try{
+        return JSON.parse(stored);
+    }
+    catch(error){
+        return null;
+    }
+}
 
-        const profile =
-        JSON.parse(storedProfile);
 
-        document.getElementById("profileName").textContent =
+function renderProfile(){
+
+    const profile =
+        getProfile();
+
+    if(!profile){
+
+        document
+        .getElementById("profileContent")
+        .style.display = "none";
+
+        document
+        .getElementById("emptyProfile")
+        .style.display = "block";
+
+        return;
+    }
+
+    document
+    .getElementById("profileName")
+    .textContent =
         profile.name || "Knowledge Creator";
 
-        document.getElementById("profileRole").textContent =
+    document
+    .getElementById("profileRole")
+    .textContent =
         profile.creatorType || "Knowledge Creator";
 
-        let meta = [];
+    let meta = [];
 
-        if(profile.country){
-            meta.push(profile.country);
-        }
+    if(profile.country){
+        meta.push(profile.country);
+    }
 
-        if(profile.organization){
-            meta.push(profile.organization);
-        }
+    if(profile.organization){
+        meta.push(profile.organization);
+    }
 
-        document.getElementById("profileMeta").textContent =
-        meta.length ? meta.join(" · ") : "JACI Member";
+    document
+    .getElementById("profileMeta")
+    .textContent =
+        meta.length
+        ? meta.join(" · ")
+        : "JACI Member";
 
-        document.getElementById("profileBio").textContent =
-        profile.bio || "Professional Story coming soon.";
+    document
+    .getElementById("profileBio")
+    .textContent =
+        profile.bio ||
+        "Professional Story coming soon.";
 
-        document.getElementById("profileOrganization").textContent =
-        profile.organization || "Independent Knowledge Creator";
+    document
+    .getElementById("profileOrganization")
+    .textContent =
+        profile.organization ||
+        "Independent Knowledge Creator";
 
-        const expertise =
+
+    const expertise =
         document.getElementById("expertiseTags");
 
-        if(profile.field){
+    expertise.innerHTML = "";
 
-            const tag =
+    if(profile.field){
+
+        const tag =
             document.createElement("span");
 
-            tag.className = "tag";
-            tag.textContent = profile.field;
+        tag.className = "tag";
+        tag.textContent = profile.field;
 
-            expertise.appendChild(tag);
-        }
+        expertise.appendChild(tag);
+    }
 
-        if(profile.creatorType){
+    if(profile.creatorType){
 
-            const tag =
+        const tag =
             document.createElement("span");
 
-            tag.className = "tag";
-            tag.textContent = profile.creatorType;
+        tag.className = "tag";
+        tag.textContent = profile.creatorType;
 
-            expertise.appendChild(tag);
-        }
+        expertise.appendChild(tag);
+    }
 
-        const initials =
+
+    const initials =
         profile.name
         ? profile.name
             .split(" ")
             .filter(Boolean)
             .slice(0,2)
-            .map(word => word[0])
+            .map(word => word.charAt(0))
             .join("")
             .toUpperCase()
         : "KC";
 
-        document.getElementById("profileAvatar").textContent =
-        initials;
-
-    }catch(error){
-
-        console.error("Profile data error:",error);
-    }
+    document
+    .getElementById("profileAvatar")
+    .textContent = initials;
 }
 
 
-/* ---------------- CONTRIBUTIONS ---------------- */
+/* =========================
+   CREATOR RECOGNITION
+========================= */
+
+function getCreatorRecognition(){
+
+    const stored =
+        localStorage.getItem(
+            "jaciCreatorRecognition"
+        );
+
+    const value =
+        parseInt(stored,10);
+
+    return Number.isFinite(value)
+        ? value
+        : 0;
+}
+
+
+function recognizeCreator(){
+
+    let current =
+        getCreatorRecognition();
+
+    current += 1;
+
+    localStorage.setItem(
+        "jaciCreatorRecognition",
+        String(current)
+    );
+
+    updateRecognitionSummary();
+}
+
+
+/* =========================
+   CONTRIBUTIONS
+========================= */
 
 function getContributions(){
 
     const stored =
-    localStorage.getItem("jaciContributions");
+        localStorage.getItem(
+            "jaciContributions"
+        );
 
     if(!stored){
         return [];
@@ -689,117 +864,177 @@ function getContributions(){
     try{
 
         const data =
-        JSON.parse(stored);
+            JSON.parse(stored);
 
-        if(Array.isArray(data)){
-            return data;
-        }
+        return Array.isArray(data)
+            ? data
+            : [];
 
-        return [];
-
-    }catch(error){
+    }
+    catch(error){
 
         return [];
     }
 }
 
 
-function saveContributions(contributions){
+function saveContributions(data){
 
     localStorage.setItem(
         "jaciContributions",
-        JSON.stringify(contributions)
+        JSON.stringify(data)
     );
 }
 
 
-/* ---------------- RECOGNITION ---------------- */
-
 function recognizeContribution(index){
 
     const contributions =
-    getContributions();
+        getContributions();
 
     if(!contributions[index]){
         return;
     }
 
-    if(
-        typeof contributions[index].recognitions
-        !== "number"
-    ){
-        contributions[index].recognitions = 0;
+    let current =
+        parseInt(
+            contributions[index].recognitions,
+            10
+        );
+
+    if(!Number.isFinite(current)){
+        current = 0;
     }
 
-    contributions[index].recognitions += 1;
+    contributions[index].recognitions =
+        current + 1;
 
     saveContributions(contributions);
 
     renderContributions();
 
-    updateTotalRecognition();
+    updateRecognitionSummary();
 }
 
 
-function updateTotalRecognition(){
+/* =========================
+   TOTAL RECOGNITION
+========================= */
+
+function getContributionRecognition(){
 
     const contributions =
-    getContributions();
+        getContributions();
 
-    const total =
-    contributions.reduce(function(sum,item){
+    return contributions.reduce(
+        function(total,item){
 
-        const value =
-        typeof item.recognitions === "number"
-        ? item.recognitions
-        : 0;
+            const value =
+                parseInt(
+                    item.recognitions,
+                    10
+                );
 
-        return sum + value;
-
-    },0);
-
-    document.getElementById("totalRecognition").textContent =
-    total;
-
-    document.getElementById("summaryRecognition").textContent =
-    total;
+            return total +
+                (
+                    Number.isFinite(value)
+                    ? value
+                    : 0
+                );
+        },
+        0
+    );
 }
 
 
-/* ---------------- RENDER ---------------- */
+function updateRecognitionSummary(){
+
+    const creator =
+        getCreatorRecognition();
+
+    const contribution =
+        getContributionRecognition();
+
+    const total =
+        creator + contribution;
+
+    document
+    .getElementById("headerRecognition")
+    .textContent = total;
+
+    document
+    .getElementById("summaryRecognition")
+    .textContent = total;
+
+    document
+    .getElementById("creatorRecognition")
+    .textContent = creator;
+
+    document
+    .getElementById("contributionRecognition")
+    .textContent = contribution;
+}
+
+
+/* =========================
+   RENDER CONTRIBUTIONS
+========================= */
 
 function renderContributions(){
 
     const list =
-    document.getElementById("contributionList");
+        document.getElementById(
+            "contributionList"
+        );
 
     const contributions =
-    getContributions();
+        getContributions();
+
+    list.innerHTML = "";
 
     if(contributions.length === 0){
 
         list.innerHTML =
-        '<div class="empty-contributions">Все още няма добавени Contributions.</div>';
-
-        updateTotalRecognition();
+        '<div class="empty-contributions">' +
+        'Все още няма добавени Contributions.' +
+        '</div>';
 
         return;
     }
 
-    list.innerHTML = "";
 
-    contributions.forEach(function(item,index){
+    contributions.forEach(
+        function(item,index){
 
         const wrapper =
-        document.createElement("div");
+            document.createElement("div");
 
         wrapper.className =
-        "contribution";
+            "contribution";
 
-        const recognitionCount =
-        typeof item.recognitions === "number"
-        ? item.recognitions
-        : 0;
+
+        const type =
+            document.createElement("div");
+
+        type.className =
+            "contribution-type";
+
+        type.textContent =
+            item.type ||
+            "Contribution";
+
+
+        const title =
+            document.createElement("h3");
+
+        title.textContent =
+            item.title ||
+            "Untitled Contribution";
+
+
+        wrapper.appendChild(type);
+        wrapper.appendChild(title);
+
 
         let meta = [];
 
@@ -811,47 +1046,26 @@ function renderContributions(){
             meta.push(item.field);
         }
 
-        const type =
-        document.createElement("div");
-
-        type.className =
-        "contribution-type";
-
-        type.textContent =
-        item.type || "Contribution";
-
-
-        const title =
-        document.createElement("h3");
-
-        title.textContent =
-        item.title || "Untitled Contribution";
-
-
-        wrapper.appendChild(type);
-        wrapper.appendChild(title);
-
-
         if(meta.length){
 
             const metadata =
-            document.createElement("div");
+                document.createElement("div");
 
             metadata.className =
-            "contribution-meta";
+                "contribution-meta";
 
             metadata.textContent =
-            meta.join(" · ");
+                meta.join(" · ");
 
             wrapper.appendChild(metadata);
         }
 
 
         const description =
-        document.createElement("p");
+            document.createElement("p");
 
         description.textContent =
-        item.description || "";
+            item.description || "";
 
         wrapper.appendChild(description);
 
@@ -861,7 +1075,7 @@ function renderContributions(){
             try{
 
                 const url =
-                new URL(item.link);
+                    new URL(item.link);
 
                 if(
                     url.protocol === "http:" ||
@@ -869,95 +1083,110 @@ function renderContributions(){
                 ){
 
                     const link =
-                    document.createElement("a");
+                        document.createElement("a");
 
                     link.className =
-                    "contribution-link";
+                        "contribution-link";
 
-                    link.href =
-                    url.href;
+                    link.href = url.href;
 
-                    link.target =
-                    "_blank";
+                    link.target = "_blank";
 
                     link.rel =
-                    "noopener noreferrer";
+                        "noopener noreferrer";
 
                     link.textContent =
-                    "Open resource ↗";
+                        "Open resource ↗";
 
                     wrapper.appendChild(link);
                 }
-
-            }catch(error){}
+            }
+            catch(error){}
         }
 
 
         const actions =
-        document.createElement("div");
+            document.createElement("div");
 
         actions.className =
-        "actions";
+            "actions";
 
 
-        const recognizeButton =
-        document.createElement("button");
+        const recognize =
+            document.createElement("button");
 
-        recognizeButton.className =
-        "action";
+        recognize.className =
+            "action";
 
-        recognizeButton.textContent =
-        "Recognize";
+        recognize.type =
+            "button";
 
-        recognizeButton.addEventListener(
+        recognize.textContent =
+            "Recognize";
+
+        recognize.addEventListener(
             "click",
             function(){
 
                 recognizeContribution(index);
-
             }
         );
 
 
+        let count =
+            parseInt(
+                item.recognitions,
+                10
+            );
+
+        if(!Number.isFinite(count)){
+            count = 0;
+        }
+
+
         const counter =
-        document.createElement("span");
+            document.createElement("span");
 
         counter.className =
-        "recognition-count";
+            "recognition-count";
 
         counter.textContent =
-        recognitionCount === 1
-        ? "1 Recognition"
-        : recognitionCount + " Recognitions";
+            count === 1
+            ? "1 Recognition"
+            : count + " Recognitions";
 
 
         const comment =
-        document.createElement("button");
+            document.createElement("button");
+
+        comment.type = "button";
 
         comment.className =
-        "action action-secondary";
+            "action action-secondary";
 
         comment.textContent =
-        "Comment";
+            "Comment";
 
         comment.onclick =
-        demoAction;
+            demoAction;
 
 
         const share =
-        document.createElement("button");
+            document.createElement("button");
+
+        share.type = "button";
 
         share.className =
-        "action action-secondary";
+            "action action-secondary";
 
         share.textContent =
-        "Share";
+            "Share";
 
         share.onclick =
-        demoAction;
+            demoAction;
 
 
-        actions.appendChild(recognizeButton);
+        actions.appendChild(recognize);
         actions.appendChild(counter);
         actions.appendChild(comment);
         actions.appendChild(share);
@@ -966,8 +1195,6 @@ function renderContributions(){
 
         list.appendChild(wrapper);
     });
-
-    updateTotalRecognition();
 }
 
 
@@ -979,7 +1206,13 @@ function demoAction(){
 }
 
 
+/* =========================
+   START JACI PROFILE
+========================= */
+
+renderProfile();
 renderContributions();
+updateRecognitionSummary();
 
 </script>
 
