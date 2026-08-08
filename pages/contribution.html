@@ -1,1 +1,434 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Add Contribution | JACI</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+  background:#f4f7fb;
+  color:#111827;
+}
+
+header{
+  background:#0f172a;
+  color:white;
+  padding:20px 40px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.logo a{
+  color:white;
+  text-decoration:none;
+  font-size:30px;
+  font-weight:800;
+}
+
+.back{
+  color:white;
+  text-decoration:none;
+  font-weight:600;
+}
+
+.hero{
+  background:linear-gradient(135deg,#0f172a,#1e3a8a,#2563eb);
+  color:white;
+  text-align:center;
+  padding:70px 25px;
+}
+
+.hero h1{
+  font-size:48px;
+  margin-bottom:14px;
+}
+
+.hero p{
+  max-width:800px;
+  margin:auto;
+  font-size:20px;
+  line-height:1.6;
+}
+
+.container{
+  max-width:900px;
+  margin:50px auto 80px;
+  padding:0 25px;
+}
+
+.card{
+  background:white;
+  padding:40px;
+  border-radius:24px;
+  box-shadow:0 12px 35px rgba(0,0,0,.09);
+}
+
+.card h2{
+  font-size:30px;
+  margin-bottom:12px;
+}
+
+.intro{
+  color:#64748b;
+  line-height:1.6;
+  margin-bottom:30px;
+}
+
+.form-group{
+  margin-bottom:22px;
+}
+
+label{
+  display:block;
+  font-weight:700;
+  margin-bottom:8px;
+}
+
+input,
+select,
+textarea{
+  width:100%;
+  padding:14px;
+  border:1px solid #cbd5e1;
+  border-radius:10px;
+  font-size:16px;
+  background:white;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+  outline:none;
+  border-color:#2563eb;
+  box-shadow:0 0 0 3px rgba(37,99,235,.08);
+}
+
+textarea{
+  min-height:130px;
+  resize:vertical;
+}
+
+.two-columns{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+}
+
+button{
+  width:100%;
+  border:none;
+  background:#2563eb;
+  color:white;
+  padding:16px;
+  border-radius:40px;
+  font-size:17px;
+  font-weight:700;
+  cursor:pointer;
+  margin-top:8px;
+}
+
+button:hover{
+  background:#1d4ed8;
+}
+
+.note{
+  background:#eff6ff;
+  border-left:4px solid #2563eb;
+  padding:18px;
+  border-radius:12px;
+  margin-top:25px;
+  line-height:1.6;
+}
+
+.note strong{
+  color:#1e40af;
+}
+
+footer{
+  background:#020617;
+  color:white;
+  text-align:center;
+  padding:40px 20px;
+}
+
+footer p{
+  margin:6px;
+}
+
+@media(max-width:700px){
+  header{
+    padding:18px 20px;
+  }
+
+  .hero h1{
+    font-size:38px;
+  }
+
+  .two-columns{
+    grid-template-columns:1fr;
+    gap:0;
+  }
+
+  .card{
+    padding:28px 22px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+  <div class="logo">
+    <a href="../index.html">JACI</a>
+  </div>
+
+  <a class="back" href="profile.html">
+    ← My Profile
+  </a>
+
+</header>
+
+<section class="hero">
+
+  <h1>Add Contribution</h1>
+
+  <p>
+    В JACI не публикувате просто post.
+    Добавяте принос към знанието, практиката и обществото.
+  </p>
+
+</section>
+
+<div class="container">
+
+  <div class="card">
+
+    <h2>New Contribution</h2>
+
+    <p class="intro">
+      Добавете публикация, изследване, проект, иновация, преподавателска дейност
+      или друг принос, който искате да бъде част от Вашата Professional Story.
+    </p>
+
+    <form id="contributionForm">
+
+      <div class="form-group">
+
+        <label for="type">
+          Type of Contribution
+        </label>
+
+        <select id="type" required>
+
+          <option value="">
+            Изберете
+          </option>
+
+          <option>Research</option>
+
+          <option>Publication</option>
+
+          <option>Book</option>
+
+          <option>Project</option>
+
+          <option>Teaching</option>
+
+          <option>Innovation</option>
+
+          <option>Business & Industry</option>
+
+          <option>Knowledge Transfer</option>
+
+          <option>Social Impact</option>
+
+          <option>Other</option>
+
+        </select>
+
+      </div>
+
+      <div class="form-group">
+
+        <label for="title">
+          Заглавие
+        </label>
+
+        <input
+          type="text"
+          id="title"
+          required
+          placeholder="Например: New Model for Smart City Development">
+
+      </div>
+
+      <div class="two-columns">
+
+        <div class="form-group">
+
+          <label for="year">
+            Година
+          </label>
+
+          <input
+            type="number"
+            id="year"
+            min="1900"
+            max="2100"
+            placeholder="2026">
+
+        </div>
+
+        <div class="form-group">
+
+          <label for="field">
+            Област
+          </label>
+
+          <input
+            type="text"
+            id="field"
+            placeholder="Например Regional Development">
+
+        </div>
+
+      </div>
+
+      <div class="form-group">
+
+        <label for="description">
+          Описание на приноса
+        </label>
+
+        <textarea
+          id="description"
+          required
+          placeholder="Опишете какво сте създали, какъв проблем решава и каква стойност носи."></textarea>
+
+      </div>
+
+      <div class="form-group">
+
+        <label for="link">
+          Линк към публикация, проект или ресурс
+        </label>
+
+        <input
+          type="url"
+          id="link"
+          placeholder="https://...">
+
+      </div>
+
+      <button type="submit">
+        Save Contribution
+      </button>
+
+    </form>
+
+    <div class="note">
+
+      <strong>JACI Principle</strong>
+
+      <br><br>
+
+      Contribution is more important than popularity.
+
+      <br><br>
+
+      Вашият принос ще бъде част от Вашата Professional Story
+      и в бъдеще ще може да получава Recognition от общността.
+
+    </div>
+
+  </div>
+
+</div>
+
+<footer>
+
+  <p><strong>JACI</strong></p>
+
+  <p>The Home of Knowledge Creators</p>
+
+  <p>Our mission is to make contribution visible.</p>
+
+</footer>
+
+<script>
+
+document
+.getElementById("contributionForm")
+.addEventListener("submit", function(event){
+
+  event.preventDefault();
+
+  const contribution = {
+
+    type:
+      document.getElementById("type").value,
+
+    title:
+      document.getElementById("title").value.trim(),
+
+    year:
+      document.getElementById("year").value,
+
+    field:
+      document.getElementById("field").value.trim(),
+
+    description:
+      document.getElementById("description").value.trim(),
+
+    link:
+      document.getElementById("link").value.trim(),
+
+    createdAt:
+      new Date().toISOString()
+
+  };
+
+  let contributions = [];
+
+  const stored =
+    localStorage.getItem("jaciContributions");
+
+  if(stored){
+
+    contributions =
+      JSON.parse(stored);
+
+  }
+
+  contributions.unshift(contribution);
+
+  localStorage.setItem(
+    "jaciContributions",
+    JSON.stringify(contributions)
+  );
+
+  alert(
+    "Вашият Contribution е запазен в демонстрационната версия на JACI."
+  );
+
+  window.location.href =
+    "profile.html";
+
+});
+
+</script>
+
+</body>
+</html>
