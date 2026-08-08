@@ -7,412 +7,536 @@
 <title>Join JACI | The Home of Knowledge Creators</title>
 
 <style>
-
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial, Helvetica, sans-serif;
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial, Helvetica, sans-serif;
 }
 
 body{
-    background:#f4f7fb;
-    color:#111827;
+  background:#f4f7fb;
+  color:#111827;
 }
 
 header{
-    background:#0f172a;
-    color:white;
-    padding:20px 40px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+  background:#0f172a;
+  color:white;
+  padding:20px 40px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 }
 
 .logo{
-    font-size:30px;
-    font-weight:800;
-    letter-spacing:1px;
+  font-size:30px;
+  font-weight:800;
+  letter-spacing:1px;
 }
 
 .logo a{
-    color:white;
-    text-decoration:none;
+  color:white;
+  text-decoration:none;
 }
 
 .back{
-    color:white;
-    text-decoration:none;
-    font-weight:600;
-}
-
-.back:hover{
-    color:#93c5fd;
+  color:white;
+  text-decoration:none;
+  font-weight:600;
 }
 
 .hero{
-    background:linear-gradient(135deg,#0f172a,#1e3a8a,#2563eb);
-    color:white;
-    text-align:center;
-    padding:70px 25px;
+  background:linear-gradient(135deg,#0f172a,#1e3a8a,#2563eb);
+  color:white;
+  text-align:center;
+  padding:70px 25px;
 }
 
 .hero h1{
-    font-size:48px;
-    margin-bottom:15px;
+  font-size:50px;
+  margin-bottom:14px;
 }
 
 .hero p{
-    max-width:750px;
-    margin:auto;
-    font-size:20px;
-    line-height:1.6;
+  max-width:800px;
+  margin:auto;
+  font-size:20px;
+  line-height:1.6;
 }
 
 .container{
-    max-width:850px;
-    margin:50px auto 80px;
-    padding:0 25px;
+  max-width:1100px;
+  margin:50px auto 80px;
+  padding:0 25px;
 }
 
-.join-card{
-    background:white;
-    padding:45px;
-    border-radius:24px;
-    box-shadow:0 12px 35px rgba(0,0,0,.09);
+.join-layout{
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  gap:28px;
+  align-items:start;
 }
 
-.join-card h2{
-    font-size:30px;
-    margin-bottom:12px;
+.join-card,
+.preview-card{
+  background:white;
+  padding:40px;
+  border-radius:24px;
+  box-shadow:0 12px 35px rgba(0,0,0,.09);
+}
+
+.join-card h2,
+.preview-card h2{
+  font-size:30px;
+  margin-bottom:12px;
 }
 
 .intro{
-    color:#64748b;
-    line-height:1.6;
-    margin-bottom:35px;
+  color:#64748b;
+  line-height:1.6;
+  margin-bottom:30px;
 }
 
 .form-group{
-    margin-bottom:22px;
+  margin-bottom:20px;
 }
 
 label{
-    display:block;
-    font-weight:700;
-    margin-bottom:8px;
+  display:block;
+  font-weight:700;
+  margin-bottom:8px;
 }
 
 input,
 select,
 textarea{
-    width:100%;
-    padding:14px;
-    border:1px solid #cbd5e1;
-    border-radius:10px;
-    font-size:16px;
-    background:white;
+  width:100%;
+  padding:14px;
+  border:1px solid #cbd5e1;
+  border-radius:10px;
+  font-size:16px;
+  background:white;
 }
 
 input:focus,
 select:focus,
 textarea:focus{
-    outline:none;
-    border-color:#2563eb;
+  outline:none;
+  border-color:#2563eb;
+  box-shadow:0 0 0 3px rgba(37,99,235,.08);
 }
 
 textarea{
-    min-height:120px;
-    resize:vertical;
+  min-height:110px;
+  resize:vertical;
 }
 
 .two-columns{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:20px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
 }
 
 button{
-    width:100%;
-    border:none;
-    background:#2563eb;
-    color:white;
-    padding:16px;
-    border-radius:40px;
-    font-size:17px;
-    font-weight:700;
-    cursor:pointer;
-    margin-top:10px;
+  width:100%;
+  border:none;
+  background:#2563eb;
+  color:white;
+  padding:16px;
+  border-radius:40px;
+  font-size:17px;
+  font-weight:700;
+  cursor:pointer;
+  margin-top:8px;
 }
 
 button:hover{
-    background:#1d4ed8;
+  background:#1d4ed8;
 }
 
 .note{
-    background:#eff6ff;
-    padding:18px;
-    border-radius:12px;
-    margin-top:25px;
-    color:#1e3a8a;
-    line-height:1.6;
+  background:#eff6ff;
+  padding:18px;
+  border-radius:12px;
+  margin-top:24px;
+  color:#1e3a8a;
+  line-height:1.6;
+}
+
+.preview-card{
+  position:sticky;
+  top:25px;
+}
+
+.profile-avatar{
+  width:90px;
+  height:90px;
+  border-radius:50%;
+  background:#2563eb;
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:30px;
+  font-weight:800;
+  margin-bottom:18px;
+}
+
+.profile-name{
+  font-size:26px;
+  font-weight:800;
+  margin-bottom:6px;
+}
+
+.profile-role{
+  color:#2563eb;
+  font-weight:700;
+  margin-bottom:12px;
+}
+
+.profile-meta{
+  color:#64748b;
+  margin-bottom:18px;
+}
+
+.profile-block{
+  border-top:1px solid #e5e7eb;
+  padding-top:16px;
+  margin-top:16px;
+}
+
+.profile-block h3{
+  margin-bottom:8px;
+  font-size:18px;
+}
+
+.profile-block p{
+  line-height:1.6;
+  color:#334155;
+}
+
+.score-box{
+  margin-top:20px;
+  background:#0f172a;
+  color:white;
+  border-radius:18px;
+  padding:22px;
+  text-align:center;
+}
+
+.score-number{
+  font-size:48px;
+  font-weight:800;
+  color:#93c5fd;
+  margin:6px 0;
+}
+
+.empty{
+  color:#94a3b8;
+  font-style:italic;
 }
 
 footer{
-    background:#020617;
-    color:white;
-    text-align:center;
-    padding:40px 20px;
+  background:#020617;
+  color:white;
+  text-align:center;
+  padding:40px 20px;
 }
 
 footer p{
-    margin:6px;
+  margin:6px;
+}
+
+@media(max-width:850px){
+  .join-layout{
+    grid-template-columns:1fr;
+  }
+
+  .preview-card{
+    position:static;
+  }
 }
 
 @media(max-width:700px){
+  header{
+    padding:18px 20px;
+  }
 
-    header{
-        padding:18px 20px;
-    }
+  .hero h1{
+    font-size:38px;
+  }
 
-    .hero h1{
-        font-size:38px;
-    }
+  .two-columns{
+    grid-template-columns:1fr;
+    gap:0;
+  }
 
-    .two-columns{
-        grid-template-columns:1fr;
-        gap:0;
-    }
-
-    .join-card{
-        padding:30px 22px;
-    }
+  .join-card,
+  .preview-card{
+    padding:28px 22px;
+  }
 }
-
 </style>
 </head>
 
 <body>
 
 <header>
+  <div class="logo">
+    <a href="../index.html">JACI</a>
+  </div>
 
-    <div class="logo">
-        <a href="../index.html">JACI</a>
-    </div>
-
-    <a class="back" href="../index.html">
-        ← Начало
-    </a>
-
+  <a class="back" href="../index.html">← Начало</a>
 </header>
 
-
 <section class="hero">
+  <h1>Join JACI</h1>
 
-    <h1>Join JACI</h1>
-
-    <p>
-        Присъединете се към общност от хора,
-        които създават знания, идеи и стойност.
-    </p>
-
+  <p>
+    Създайте първия си JACI Profile и покажете каква стойност създавате чрез знания, идеи и принос.
+  </p>
 </section>
-
 
 <div class="container">
 
-<div class="join-card">
+  <div class="join-layout">
 
-<h2>Create your JACI Profile</h2>
+    <div class="join-card">
 
-<p class="intro">
-Разкажете ни накратко кой сте и какъв е Вашият професионален принос.
-Това ще бъде основата на Вашата бъдеща Professional Story в JACI.
-</p>
+      <h2>Create your JACI Profile</h2>
 
+      <p class="intro">
+        Попълнете основната информация. Вдясно ще видите как би изглеждал Вашият профил.
+      </p>
 
-<form id="joinForm">
+      <form id="joinForm">
 
-<div class="two-columns">
+        <div class="two-columns">
 
-<div class="form-group">
+          <div class="form-group">
+            <label for="name">Име и фамилия</label>
+            <input type="text" id="name" required placeholder="Вашето име">
+          </div>
 
-<label for="name">Име и фамилия</label>
+          <div class="form-group">
+            <label for="country">Държава</label>
+            <input type="text" id="country" required placeholder="Например Bulgaria">
+          </div>
 
-<input
-type="text"
-id="name"
-required
-placeholder="Вашето име">
+        </div>
+
+        <div class="form-group">
+          <label for="email">Имейл</label>
+          <input type="email" id="email" required placeholder="name@example.com">
+        </div>
+
+        <div class="form-group">
+          <label for="organization">Организация</label>
+          <input type="text" id="organization" placeholder="Университет, компания или организация">
+        </div>
+
+        <div class="form-group">
+          <label for="creatorType">Аз съм...</label>
+
+          <select id="creatorType" required>
+            <option value="">Изберете</option>
+            <option>Researcher</option>
+            <option>University Lecturer</option>
+            <option>Teacher</option>
+            <option>Expert</option>
+            <option>Innovator</option>
+            <option>Engineer</option>
+            <option>Medical Professional</option>
+            <option>Knowledge Creator</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="field">Професионална област</label>
+          <input type="text" id="field" required placeholder="Например Regional Development">
+        </div>
+
+        <div class="form-group">
+          <label for="bio">Кратко представяне</label>
+
+          <textarea
+            id="bio"
+            placeholder="Разкажете накратко за своя професионален път, опит и интереси."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="contribution">С какво допринасяте?</label>
+
+          <textarea
+            id="contribution"
+            required
+            placeholder="Опишете знание, идея, проект, изследване, преподавателска или друга дейност, с която създавате стойност."></textarea>
+        </div>
+
+        <button type="submit">
+          Create my JACI Profile
+        </button>
+
+      </form>
+
+      <div class="note">
+        <strong>JACI Principle</strong><br><br>
+        Много хора, които създават знания и стойност, не получават достатъчно видимост, признание или възможности, пропорционални на своя принос.
+        <br><br>
+        <strong>Our mission is to make contribution visible.</strong>
+      </div>
+
+    </div>
+
+    <div class="preview-card">
+
+      <h2>Profile Preview</h2>
+
+      <div class="profile-avatar" id="previewAvatar">
+        KC
+      </div>
+
+      <div class="profile-name" id="previewName">
+        Your Name
+      </div>
+
+      <div class="profile-role" id="previewRole">
+        Knowledge Creator
+      </div>
+
+      <div class="profile-meta" id="previewMeta">
+        Country · Organization
+      </div>
+
+      <div class="profile-block">
+        <h3>Area of Expertise</h3>
+        <p id="previewField" class="empty">
+          Your professional field will appear here.
+        </p>
+      </div>
+
+      <div class="profile-block">
+        <h3>Professional Story</h3>
+        <p id="previewBio" class="empty">
+          Your professional story will appear here.
+        </p>
+      </div>
+
+      <div class="profile-block">
+        <h3>Contribution</h3>
+        <p id="previewContribution" class="empty">
+          Your contribution will appear here.
+        </p>
+      </div>
+
+      <div class="score-box">
+        <p>JACI Score</p>
+        <div class="score-number">—</div>
+        <p>Score will be activated in a future version.</p>
+      </div>
+
+    </div>
+
+  </div>
 
 </div>
-
-
-<div class="form-group">
-
-<label for="country">Държава</label>
-
-<input
-type="text"
-id="country"
-required
-placeholder="Например Bulgaria">
-
-</div>
-
-</div>
-
-
-<div class="form-group">
-
-<label for="email">Имейл</label>
-
-<input
-type="email"
-id="email"
-required
-placeholder="name@example.com">
-
-</div>
-
-
-<div class="form-group">
-
-<label for="organization">Организация</label>
-
-<input
-type="text"
-id="organization"
-placeholder="Университет, компания, организация...">
-
-</div>
-
-
-<div class="form-group">
-
-<label for="creatorType">
-Аз съм...
-</label>
-
-<select id="creatorType" required>
-
-<option value="">Изберете</option>
-
-<option>Researcher</option>
-
-<option>University Lecturer</option>
-
-<option>Teacher</option>
-
-<option>Expert</option>
-
-<option>Innovator</option>
-
-<option>Engineer</option>
-
-<option>Doctor / Medical Professional</option>
-
-<option>Knowledge Creator</option>
-
-<option>Other</option>
-
-</select>
-
-</div>
-
-
-<div class="form-group">
-
-<label for="field">
-Професионална област
-</label>
-
-<input
-type="text"
-id="field"
-required
-placeholder="Например Regional Development">
-
-</div>
-
-
-<div class="form-group">
-
-<label for="bio">
-Кратко представяне
-</label>
-
-<textarea
-id="bio"
-placeholder="Разкажете накратко за своята работа, знания и професионален път."></textarea>
-
-</div>
-
-
-<div class="form-group">
-
-<label for="contribution">
-С какво допринасяте?
-</label>
-
-<textarea
-id="contribution"
-required
-placeholder="Опишете идея, знание, проект, изследване, преподавателска или друга дейност, с която създавате стойност."></textarea>
-
-</div>
-
-
-<button type="submit">
-Create my JACI Profile
-</button>
-
-</form>
-
-
-<div class="note">
-
-<strong>JACI Principle</strong><br><br>
-
-Много хора, които създават знания и стойност,
-не получават достатъчно видимост, признание или възможности,
-пропорционални на своя принос.
-
-<br><br>
-
-<strong>Our mission is to make contribution visible.</strong>
-
-</div>
-
-</div>
-
-</div>
-
 
 <footer>
-
-<p><strong>JACI</strong></p>
-
-<p>The Home of Knowledge Creators</p>
-
-<p>Our mission is to make contribution visible.</p>
-
+  <p><strong>JACI</strong></p>
+  <p>The Home of Knowledge Creators</p>
+  <p>Our mission is to make contribution visible.</p>
 </footer>
-
 
 <script>
 
+const nameInput = document.getElementById("name");
+const countryInput = document.getElementById("country");
+const organizationInput = document.getElementById("organization");
+const creatorTypeInput = document.getElementById("creatorType");
+const fieldInput = document.getElementById("field");
+const bioInput = document.getElementById("bio");
+const contributionInput = document.getElementById("contribution");
+
+function updatePreview(){
+
+  const name = nameInput.value.trim();
+  const country = countryInput.value.trim();
+  const organization = organizationInput.value.trim();
+  const creatorType = creatorTypeInput.value;
+  const field = fieldInput.value.trim();
+  const bio = bioInput.value.trim();
+  const contribution = contributionInput.value.trim();
+
+  document.getElementById("previewName").textContent =
+    name || "Your Name";
+
+  document.getElementById("previewRole").textContent =
+    creatorType || "Knowledge Creator";
+
+  let meta = [];
+
+  if(country){
+    meta.push(country);
+  }
+
+  if(organization){
+    meta.push(organization);
+  }
+
+  document.getElementById("previewMeta").textContent =
+    meta.length ? meta.join(" · ") : "Country · Organization";
+
+  document.getElementById("previewField").textContent =
+    field || "Your professional field will appear here.";
+
+  document.getElementById("previewBio").textContent =
+    bio || "Your professional story will appear here.";
+
+  document.getElementById("previewContribution").textContent =
+    contribution || "Your contribution will appear here.";
+
+  const initials = name
+    ? name.split(" ")
+      .filter(Boolean)
+      .slice(0,2)
+      .map(word => word[0])
+      .join("")
+      .toUpperCase()
+    : "KC";
+
+  document.getElementById("previewAvatar").textContent = initials;
+
+}
+
+[
+  nameInput,
+  countryInput,
+  organizationInput,
+  creatorTypeInput,
+  fieldInput,
+  bioInput,
+  contributionInput
+].forEach(function(element){
+
+  element.addEventListener("input", updatePreview);
+  element.addEventListener("change", updatePreview);
+
+});
+
 document.getElementById("joinForm").addEventListener("submit", function(event){
 
-    event.preventDefault();
+  event.preventDefault();
 
-    const name = document.getElementById("name").value;
+  updatePreview();
 
-    alert(
-        "Добре дошли в JACI, " +
-        name +
-        "! Вашият профил е подготвен в демонстрационната версия."
-    );
+  const name = nameInput.value.trim();
+
+  alert(
+    "Добре дошли в JACI, " +
+    name +
+    "! Това е визуален preview на Вашия бъдещ профил."
+  );
 
 });
 
