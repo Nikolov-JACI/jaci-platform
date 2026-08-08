@@ -3,172 +3,708 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>JACI | The Home of Knowledge Creators</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
-html{scroll-behavior:smooth}
-body{background:#f4f7fb;color:#111827}
-header{background:#0f172a;color:white;padding:22px 40px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100}
-.logo{font-size:30px;font-weight:800}
-nav a{color:white;text-decoration:none;margin-left:18px;font-weight:600}
-.hero{background:linear-gradient(135deg,#0f172a,#1d4ed8,#2563eb);color:white;text-align:center;padding:115px 30px}
-.hero h1{font-size:78px;margin-bottom:15px}
-.hero h2{font-size:34px;margin-bottom:25px;font-weight:500}
-.hero p{font-size:22px;max-width:950px;margin:0 auto 35px;line-height:1.7}
-.btn{border:none;cursor:pointer;display:inline-block;padding:15px 32px;margin:8px;background:white;color:#0f172a;text-decoration:none;border-radius:40px;font-weight:bold;font-size:16px}
-.btn-blue{background:#2563eb;color:white;border:1px solid white}
-.section{max-width:1200px;margin:auto;padding:75px 30px}
-.section h2{text-align:center;font-size:36px;margin-bottom:30px}
-.section-intro{max-width:900px;margin:0 auto 40px;text-align:center;font-size:20px;line-height:1.7}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
-.card{background:white;padding:30px;border-radius:20px;box-shadow:0 10px 25px rgba(0,0,0,.08)}
-.card h3{font-size:24px;margin-bottom:14px;color:#1d4ed8}
-.card p,.card li{font-size:17px;line-height:1.6}
-.card ul{padding-left:20px}
-.mission{background:white;max-width:none}
-.mission-box{max-width:1000px;margin:auto;text-align:center;font-size:22px;line-height:1.8}
-.profile{background:#eef2ff;max-width:none}
-.profile-inner{max-width:1100px;margin:auto}
-.profile-grid{display:grid;grid-template-columns:1fr 2fr;gap:24px}
-.profile-card{background:#0f172a;color:white;padding:35px;border-radius:24px}
-.avatar{width:110px;height:110px;border-radius:50%;background:#2563eb;display:flex;align-items:center;justify-content:center;font-size:42px;font-weight:800;margin-bottom:20px}
-.score{font-size:58px;font-weight:800;color:#93c5fd;margin-top:18px}
-.badge{display:inline-block;background:#dbeafe;color:#1e40af;padding:7px 14px;border-radius:30px;font-size:14px;font-weight:bold;margin-bottom:14px}
-.post{background:white;padding:28px;border-radius:20px;margin-bottom:20px;box-shadow:0 10px 25px rgba(0,0,0,.08)}
-.post small{color:#64748b}
-.action{display:inline-block;background:#2563eb;color:white;padding:9px 17px;border-radius:30px;margin:12px 8px 0 0;font-size:14px;font-weight:bold;cursor:pointer}
-footer{background:#020617;color:white;text-align:center;padding:50px 20px}
-@media(max-width:850px){header{flex-direction:column;gap:15px}nav a{margin:6px}.hero h1{font-size:54px}.hero h2{font-size:26px}.profile-grid{grid-template-columns:1fr}}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  background:#f4f7fb;
+  color:#111827;
+}
+
+header{
+  background:#0f172a;
+  color:white;
+  padding:20px 40px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:sticky;
+  top:0;
+  z-index:100;
+}
+
+.logo{
+  font-size:30px;
+  font-weight:800;
+  letter-spacing:1px;
+}
+
+nav a{
+  color:white;
+  text-decoration:none;
+  margin-left:18px;
+  font-weight:600;
+  font-size:15px;
+}
+
+nav a:hover{
+  color:#93c5fd;
+}
+
+.hero{
+  background:linear-gradient(135deg,#0f172a,#1e3a8a,#2563eb);
+  color:white;
+  text-align:center;
+  padding:110px 30px 120px;
+}
+
+.hero h1{
+  font-size:78px;
+  margin-bottom:14px;
+  letter-spacing:3px;
+}
+
+.hero h2{
+  font-size:34px;
+  font-weight:500;
+  margin-bottom:22px;
+}
+
+.hero .problem{
+  max-width:980px;
+  margin:0 auto 22px;
+  font-size:22px;
+  line-height:1.65;
+}
+
+.hero .answer{
+  font-size:24px;
+  font-weight:700;
+  margin-bottom:34px;
+}
+
+.btn{
+  border:none;
+  cursor:pointer;
+  display:inline-block;
+  padding:15px 30px;
+  margin:8px;
+  background:white;
+  color:#0f172a;
+  text-decoration:none;
+  border-radius:40px;
+  font-weight:bold;
+  font-size:16px;
+  transition:.2s;
+}
+
+.btn:hover{
+  transform:translateY(-2px);
+}
+
+.btn-blue{
+  background:#2563eb;
+  color:white;
+  border:1px solid rgba(255,255,255,.7);
+}
+
+.section{
+  max-width:1180px;
+  margin:auto;
+  padding:75px 30px;
+}
+
+.section h2{
+  text-align:center;
+  font-size:36px;
+  margin-bottom:28px;
+}
+
+.section-intro{
+  max-width:900px;
+  margin:0 auto 40px;
+  text-align:center;
+  font-size:20px;
+  line-height:1.7;
+}
+
+.mission{
+  background:white;
+  max-width:none;
+}
+
+.mission-inner{
+  max-width:1050px;
+  margin:auto;
+  text-align:center;
+}
+
+.mission-inner h2{
+  margin-bottom:20px;
+}
+
+.mission-inner p{
+  font-size:22px;
+  line-height:1.8;
+}
+
+.mission-highlight{
+  margin-top:22px;
+  font-size:26px;
+  font-weight:700;
+  color:#1d4ed8;
+}
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:24px;
+}
+
+.card{
+  background:white;
+  padding:30px;
+  border-radius:20px;
+  box-shadow:0 10px 25px rgba(0,0,0,.08);
+  transition:.2s;
+}
+
+.card:hover{
+  transform:translateY(-4px);
+}
+
+.card h3{
+  font-size:23px;
+  margin-bottom:14px;
+  color:#1d4ed8;
+}
+
+.card p,
+.card li{
+  font-size:17px;
+  line-height:1.65;
+}
+
+.card ul{
+  padding-left:20px;
+}
+
+.profile-section{
+  background:#eef2ff;
+  max-width:none;
+}
+
+.profile-inner{
+  max-width:1180px;
+  margin:auto;
+}
+
+.profile-grid{
+  display:grid;
+  grid-template-columns:1fr 2fr;
+  gap:24px;
+}
+
+.profile-card{
+  background:#0f172a;
+  color:white;
+  padding:35px;
+  border-radius:24px;
+  box-shadow:0 10px 25px rgba(0,0,0,.12);
+}
+
+.avatar{
+  width:110px;
+  height:110px;
+  border-radius:50%;
+  background:#2563eb;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:42px;
+  font-weight:800;
+  margin-bottom:20px;
+}
+
+.profile-card h3{
+  font-size:28px;
+  margin-bottom:8px;
+}
+
+.profile-card p{
+  line-height:1.7;
+  margin-bottom:7px;
+}
+
+.score{
+  font-size:58px;
+  font-weight:800;
+  color:#93c5fd;
+  margin-top:16px;
+}
+
+.story{
+  margin-top:24px;
+  padding-top:18px;
+  border-top:1px solid #e5e7eb;
+}
+
+.story h4{
+  font-size:20px;
+  margin-bottom:10px;
+}
+
+.story p{
+  line-height:1.7;
+}
+
+.creators{
+  background:#f8fafc;
+}
+
+.badge{
+  display:inline-block;
+  background:#dbeafe;
+  color:#1e40af;
+  padding:7px 14px;
+  border-radius:30px;
+  font-size:14px;
+  font-weight:bold;
+  margin-bottom:14px;
+}
+
+.contributions{
+  background:white;
+}
+
+.contribution{
+  background:#f8fafc;
+  padding:28px;
+  border-radius:20px;
+  margin-bottom:20px;
+  border:1px solid #e5e7eb;
+}
+
+.contribution h3{
+  margin-bottom:6px;
+}
+
+.contribution small{
+  color:#64748b;
+}
+
+.contribution p{
+  margin-top:14px;
+  line-height:1.65;
+  font-size:17px;
+}
+
+.actions{
+  margin-top:18px;
+}
+
+.action{
+  display:inline-block;
+  background:#2563eb;
+  color:white;
+  padding:9px 17px;
+  border-radius:30px;
+  margin:5px 8px 0 0;
+  font-size:14px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.action.secondary{
+  background:#e2e8f0;
+  color:#0f172a;
+}
+
+.recognition{
+  background:#0f172a;
+  color:white;
+  max-width:none;
+}
+
+.recognition-inner{
+  max-width:1100px;
+  margin:auto;
+}
+
+.recognition h2{
+  color:white;
+}
+
+.recognition p{
+  max-width:900px;
+  margin:0 auto 35px;
+  text-align:center;
+  font-size:20px;
+  line-height:1.7;
+}
+
+.score-box{
+  background:#111827;
+  border:1px solid #334155;
+  color:white;
+  padding:38px;
+  border-radius:22px;
+  text-align:center;
+}
+
+.score-box .score{
+  margin:10px 0 0;
+}
+
+.score-box h3{
+  font-size:24px;
+  margin-bottom:10px;
+}
+
+footer{
+  background:#020617;
+  color:white;
+  text-align:center;
+  padding:48px 20px;
+}
+
+footer h3{
+  margin-bottom:10px;
+  font-size:23px;
+}
+
+footer p{
+  margin-bottom:7px;
+  font-size:16px;
+}
+
+@media(max-width:850px){
+
+  header{
+    flex-direction:column;
+    gap:14px;
+  }
+
+  nav{
+    text-align:center;
+  }
+
+  nav a{
+    display:inline-block;
+    margin:6px;
+  }
+
+  .hero h1{
+    font-size:54px;
+  }
+
+  .hero h2{
+    font-size:26px;
+  }
+
+  .hero .problem{
+    font-size:18px;
+  }
+
+  .profile-grid{
+    grid-template-columns:1fr;
+  }
+}
+
 </style>
 </head>
 
 <body>
 
 <header>
+
   <div class="logo">JACI</div>
+
   <nav>
     <a href="#mission">Мисия</a>
-    <a href="#founder">Founder</a>
+    <a href="#founder">Professional Story</a>
     <a href="#creators">Creators</a>
-    <a href="#feed">Feed</a>
-    <a href="#score">JACI Score</a>
+    <a href="#contributions">Contributions</a>
+    <a href="#recognition">Recognition</a>
   </nav>
+
 </header>
 
 <section class="hero">
+
   <h1>JACI</h1>
+
   <h2>The Home of Knowledge Creators</h2>
-  <p>JACI открива, признава и развива хората, които създават стойност чрез знания, идеи и принос.</p>
+
+  <p class="problem">
+    Много хора, които създават знания и стойност, не получават достатъчно видимост,
+    признание или възможности, пропорционални на своя принос.
+  </p>
+
+  <p class="answer">
+    JACI exists to change that.
+  </p>
+
   <button class="btn" onclick="joinJaci()">Присъедини се</button>
-  <button class="btn btn-blue" onclick="goToCreators()">Разгледай Knowledge Creators</button>
+
+  <button class="btn btn-blue" onclick="goToCreators()">
+    Открий Knowledge Creators
+  </button>
+
 </section>
 
 <section class="section mission" id="mission">
-  <h2>Мисията на JACI</h2>
-  <div class="mission-box">
-    <p>Талантът е навсякъде. Признанието също трябва да бъде. JACI създава среда за учени, преподаватели, експерти и създатели на съдържание, които искат техният принос да бъде видян.</p>
+
+  <div class="mission-inner">
+
+    <h2>Мисията на JACI</h2>
+
+    <p>
+      JACI е дигитална екосистема за хората, които създават знания, идеи и реална стойност.
+      Платформата има за цел да направи професионалния и обществения принос по-видим,
+      да насърчава признанието и да създава нови възможности за развитие и сътрудничество.
+    </p>
+
+    <div class="mission-highlight">
+      Our mission is to make contribution visible.
+    </div>
+
   </div>
+
 </section>
 
-<section class="section profile" id="founder">
+<section class="section profile-section" id="founder">
+
   <div class="profile-inner">
-    <h2>Founder Profile</h2>
+
+    <h2>Professional Story</h2>
+
     <div class="profile-grid">
+
       <div class="profile-card">
+
         <div class="avatar">GN</div>
+
         <h3>Georgi Nikolov</h3>
+
         <p>🇧🇬 Sofia, Bulgaria</p>
-        <p>Associate Professor | Researcher | Academic Leader</p>
+
+        <p>Associate Professor</p>
+
+        <p>Researcher · Academic Leader</p>
+
         <p>Founder of JACI</p>
+
         <div class="score">84</div>
+
         <p><strong>JACI Score</strong></p>
+
         <p>Impact Leader</p>
+
       </div>
 
       <div class="card">
+
         <h3>About</h3>
-        <p>Assoc. Prof. Dr. Georgi Nikolov is a researcher, lecturer and academic leader specializing in regional development, smart cities, state policies and strategies, regional competitiveness and sustainable territorial development.</p>
+
+        <p>
+          Assoc. Prof. Dr. Georgi Nikolov is a researcher and academic leader specializing
+          in regional development, regional management, smart cities, state policies and strategies,
+          regional competitiveness and sustainable territorial development.
+        </p>
+
         <br>
-        <h3>Areas of Expertise</h3>
-        <ul>
-          <li>Regional Development</li>
-          <li>Smart Cities</li>
-          <li>State Policies and Strategies</li>
-          <li>Regional Competitiveness</li>
-          <li>Local Governance</li>
-          <li>Sustainable Development</li>
-        </ul>
+
+        <p>
+          He serves as Deputy Dean of the Faculty of Management and Administration and Director
+          of the Institute for Postgraduate Qualification at the University of National and World Economy
+          in Sofia, Bulgaria.
+        </p>
+
+        <div class="story">
+
+          <h4>Professional Story</h4>
+
+          <p>
+            His academic work connects research, teaching and practical engagement with public institutions
+            and local communities. His professional path is focused on creating knowledge that can support
+            better regional policies, smarter cities and stronger territorial development.
+          </p>
+
+        </div>
+
+        <div class="story">
+
+          <h4>Areas of Expertise</h4>
+
+          <ul>
+            <li>Regional Development</li>
+            <li>Smart Cities</li>
+            <li>State Policies and Strategies</li>
+            <li>Regional Competitiveness</li>
+            <li>Local Governance</li>
+            <li>Sustainable Development</li>
+            <li>Innovation and Territorial Development</li>
+          </ul>
+
+        </div>
+
       </div>
+
     </div>
+
   </div>
+
 </section>
 
-<section class="section" id="creators">
+<section class="section creators" id="creators">
+
   <h2>Discover Knowledge Creators</h2>
-  <p class="section-intro">Първата общност в JACI — хора, които създават знания, идеи и стойност.</p>
+
+  <p class="section-intro">
+    JACI поставя хората зад знанието в центъра на платформата.
+  </p>
 
   <div class="cards">
+
     <div class="card">
+
       <span class="badge">Scientist</span>
+
       <h3>Hidden Scientist</h3>
-      <p>Изследовател с ценен принос, който заслужава повече публичност и признание.</p>
+
+      <p>
+        Изследовател със стойностен принос, който заслужава по-голяма професионална видимост.
+      </p>
+
     </div>
+
     <div class="card">
+
       <span class="badge">Teacher</span>
+
       <h3>Inspiring Teacher</h3>
-      <p>Преподавател, който развива хората чрез знания, менторство и подкрепа.</p>
+
+      <p>
+        Преподавател, който създава стойност чрез знание, образование и менторство.
+      </p>
+
     </div>
+
     <div class="card">
-      <span class="badge">Innovator</span>
-      <h3>Knowledge Innovator</h3>
-      <p>Създател на идея, проект или решение с потенциал за обществена стойност.</p>
+
+      <span class="badge">Creator</span>
+
+      <h3>Knowledge Creator</h3>
+
+      <p>
+        Автор, експерт или създател на съдържание, който превръща знанията в обществена стойност.
+      </p>
+
     </div>
+
   </div>
+
 </section>
 
-<section class="section" id="feed">
-  <h2>JACI Feed</h2>
-  <p class="section-intro">Първи демонстрационен поток на JACI.</p>
+<section class="section contributions" id="contributions">
 
-  <div class="post">
+  <h2>Contributions</h2>
+
+  <p class="section-intro">
+    В JACI хората не просто публикуват. Те споделят своя принос.
+  </p>
+
+  <div class="contribution">
+
     <h3>Georgi Nikolov</h3>
+
     <small>Founder · Knowledge Creator</small>
-    <p>JACI е платформа за хора, които създават стойност чрез знания, идеи и принос.</p>
-    <span class="action" onclick="react()">Useful</span>
-    <span class="action" onclick="react()">Comment</span>
-    <span class="action" onclick="react()">Recognize</span>
+
+    <p>
+      Разработване на концепция за дигитална екосистема, която прави знанията,
+      професионалния принос и стойностните хора по-видими.
+    </p>
+
+    <div class="actions">
+      <span class="action" onclick="recognize()">Recognize</span>
+      <span class="action secondary" onclick="demoAction()">Comment</span>
+      <span class="action secondary" onclick="demoAction()">Share</span>
+    </div>
+
   </div>
 
-  <div class="post">
+  <div class="contribution">
+
     <h3>Hidden Scientist</h3>
+
     <small>Researcher · Hidden Gem</small>
-    <p>В света има много стойностни учени, които заслужават повече видимост и признание.</p>
-    <span class="action" onclick="react()">Useful</span>
-    <span class="action" onclick="react()">Comment</span>
-    <span class="action" onclick="react()">Recognize</span>
+
+    <p>
+      Ново изследване с потенциално значим принос към своята научна област,
+      което все още не е достигнало достатъчно широка професионална аудитория.
+    </p>
+
+    <div class="actions">
+      <span class="action" onclick="recognize()">Recognize</span>
+      <span class="action secondary" onclick="demoAction()">Comment</span>
+      <span class="action secondary" onclick="demoAction()">Share</span>
+    </div>
+
   </div>
+
 </section>
 
-<section class="section" id="score">
-  <h2>JACI Score</h2>
-  <div class="card" style="text-align:center;background:#0f172a;color:white">
-    <p>Демонстрационен пример за бъдещия профилен рейтинг в JACI.</p>
-    <div class="score">84</div>
-    <h3 style="color:white">Impact Leader</h3>
-    <p>Оценка за знания, принос, признание и активност в общността.</p>
+<section class="section recognition" id="recognition">
+
+  <div class="recognition-inner">
+
+    <h2>Recognition</h2>
+
+    <p>
+      JACI не измерва стойността на човека чрез популярност.
+      Целта е професионалният принос да бъде по-лесно откриваем,
+      разбираем и признат от общността.
+    </p>
+
+    <div class="score-box">
+
+      <p>Демонстрационен JACI Score</p>
+
+      <div class="score">84</div>
+
+      <h3>Impact Leader</h3>
+
+      <p>
+        Бъдещият JACI Score ще отразява различни форми на принос,
+        признание и професионална активност, а не просто брой последователи.
+      </p>
+
+    </div>
+
   </div>
+
 </section>
 
 <footer>
-  <h3>Основател: Георги Николов</h3>
-  <p>JACI е платформа за знания, признание и развитие.</p>
+
+  <h3>JACI</h3>
+
   <p>The Home of Knowledge Creators</p>
+
+  <p>Our mission is to make contribution visible.</p>
+
+  <p>Founder: Georgi Nikolov</p>
+
 </footer>
 
 <script>
+
 function joinJaci(){
-  alert("Добре дошли в JACI! В следващата версия тук ще има регистрация.");
+  alert("Добре дошли в JACI! Регистрацията ще бъде добавена в следваща версия.");
   document.getElementById("founder").scrollIntoView({behavior:"smooth"});
 }
 
@@ -176,9 +712,14 @@ function goToCreators(){
   document.getElementById("creators").scrollIntoView({behavior:"smooth"});
 }
 
-function react(){
-  alert("Функцията е демонстрационна. В бъдеща версия тук ще има реално действие.");
+function recognize(){
+  alert("Recognition recorded — демонстрационна версия.");
 }
+
+function demoAction(){
+  alert("Тази функция ще бъде активирана в следваща версия на JACI.");
+}
+
 </script>
 
 </body>
