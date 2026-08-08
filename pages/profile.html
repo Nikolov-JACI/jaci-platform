@@ -14,9 +14,7 @@
     font-family:Arial, Helvetica, sans-serif;
 }
 
-html{
-    scroll-behavior:smooth;
-}
+html{scroll-behavior:smooth;}
 
 body{
     background:#f4f7fb;
@@ -40,7 +38,6 @@ header{
     text-decoration:none;
     font-size:30px;
     font-weight:800;
-    letter-spacing:1px;
 }
 
 nav a{
@@ -48,10 +45,6 @@ nav a{
     text-decoration:none;
     margin-left:20px;
     font-weight:600;
-}
-
-nav a:hover{
-    color:#93c5fd;
 }
 
 .cover{
@@ -104,7 +97,6 @@ nav a:hover{
 
 .meta{
     color:#64748b;
-    line-height:1.6;
 }
 
 .recognition-box{
@@ -113,13 +105,17 @@ nav a:hover{
     color:white;
     padding:20px 25px;
     border-radius:18px;
-    min-width:150px;
+    min-width:170px;
 }
 
-.recognition-box .number{
-    font-size:42px;
+.recognition-number{
+    font-size:44px;
     color:#93c5fd;
     font-weight:800;
+}
+
+.recognition-label{
+    font-weight:700;
 }
 
 .recognition-box small{
@@ -174,26 +170,21 @@ nav a:hover{
     margin-bottom:20px;
 }
 
-.add-button:hover{
-    background:#1d4ed8;
-}
-
 .contribution{
     border-top:1px solid #e5e7eb;
-    padding:22px 0;
+    padding:24px 0;
 }
 
 .contribution:first-of-type{
     border-top:none;
-    padding-top:0;
 }
 
 .contribution-type{
     color:#2563eb;
     font-weight:700;
     font-size:14px;
-    margin-bottom:7px;
     text-transform:uppercase;
+    margin-bottom:7px;
 }
 
 .contribution-meta{
@@ -203,8 +194,8 @@ nav a:hover{
 }
 
 .contribution h3{
-    margin-bottom:8px;
     font-size:20px;
+    margin-bottom:8px;
 }
 
 .contribution p{
@@ -220,24 +211,50 @@ nav a:hover{
 }
 
 .actions{
-    margin-top:14px;
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:8px;
+    margin-top:16px;
 }
 
 .action{
-    display:inline-block;
+    border:none;
     background:#2563eb;
     color:white;
-    padding:8px 15px;
+    padding:9px 16px;
     border-radius:25px;
-    margin-right:7px;
     font-size:14px;
     font-weight:700;
     cursor:pointer;
 }
 
+.action:hover{
+    background:#1d4ed8;
+}
+
 .action-secondary{
     background:#e2e8f0;
     color:#0f172a;
+}
+
+.recognition-count{
+    font-size:14px;
+    color:#475569;
+    font-weight:700;
+    margin-left:4px;
+}
+
+.recognition-summary{
+    background:linear-gradient(135deg,#eff6ff,#dbeafe);
+    border-left:4px solid #2563eb;
+}
+
+.summary-number{
+    font-size:46px;
+    font-weight:800;
+    color:#1d4ed8;
+    margin-bottom:5px;
 }
 
 .empty-contributions{
@@ -286,10 +303,6 @@ nav a:hover{
     border-left:4px solid #2563eb;
 }
 
-.principle strong{
-    color:#1e40af;
-}
-
 .edit-button{
     display:block;
     text-align:center;
@@ -302,26 +315,6 @@ nav a:hover{
     margin-top:15px;
 }
 
-.empty-profile{
-    max-width:800px;
-    margin:60px auto;
-    background:white;
-    padding:40px;
-    border-radius:20px;
-    text-align:center;
-    box-shadow:0 10px 30px rgba(0,0,0,.08);
-}
-
-.empty-profile h1{
-    margin-bottom:15px;
-}
-
-.empty-profile p{
-    line-height:1.7;
-    margin-bottom:22px;
-    color:#475569;
-}
-
 footer{
     background:#020617;
     color:white;
@@ -329,9 +322,7 @@ footer{
     padding:45px 20px;
 }
 
-footer p{
-    margin:6px;
-}
+footer p{margin:6px;}
 
 @media(max-width:850px){
 
@@ -340,9 +331,7 @@ footer p{
         gap:12px;
     }
 
-    nav{
-        text-align:center;
-    }
+    nav{text-align:center;}
 
     nav a{
         display:inline-block;
@@ -354,9 +343,7 @@ footer p{
         text-align:center;
     }
 
-    .avatar{
-        margin:auto;
-    }
+    .avatar{margin:auto;}
 
     .recognition-box{
         max-width:220px;
@@ -374,275 +361,300 @@ footer p{
 
 <header>
 
-    <div class="logo">
-        <a href="../index.html">JACI</a>
-    </div>
+<div class="logo">
+<a href="../index.html">JACI</a>
+</div>
 
-    <nav>
-        <a href="../index.html">Home</a>
-        <a href="#story">Professional Story</a>
-        <a href="#contributions">Contributions</a>
-        <a href="#recognition">Recognition</a>
-    </nav>
+<nav>
+<a href="../index.html">Home</a>
+<a href="#story">Professional Story</a>
+<a href="#contributions">Contributions</a>
+<a href="#recognition">Recognition</a>
+</nav>
 
 </header>
 
 <div class="cover"></div>
 
-<div id="profileContent">
-
 <main class="profile-container">
 
-    <section class="profile-header">
+<section class="profile-header">
 
-        <div class="avatar" id="profileAvatar">
-            KC
-        </div>
+<div class="avatar" id="profileAvatar">KC</div>
 
-        <div class="identity">
+<div class="identity">
 
-            <h1 id="profileName">
-                Knowledge Creator
-            </h1>
+<h1 id="profileName">Knowledge Creator</h1>
 
-            <div class="role" id="profileRole">
-                JACI Member
-            </div>
+<div class="role" id="profileRole">
+JACI Member
+</div>
 
-            <div class="meta" id="profileMeta">
-                Your professional identity in the JACI community
-            </div>
+<div class="meta" id="profileMeta">
+The Home of Knowledge Creators
+</div>
 
-        </div>
+</div>
 
-        <div class="recognition-box" id="recognition">
+<div class="recognition-box">
 
-            <div class="number">—</div>
+<div class="recognition-number" id="totalRecognition">
+0
+</div>
 
-            <strong>JACI Score</strong>
+<div class="recognition-label">
+Recognitions
+</div>
 
-            <br>
+<small>
+Received for contributions
+</small>
 
-            <small>Coming soon</small>
+</div>
 
-        </div>
+</section>
 
-    </section>
 
-    <div class="content-grid">
+<div class="content-grid">
 
-        <div>
+<div>
 
-            <section class="card" id="story">
+<section class="card" id="story">
 
-                <h2>Professional Story</h2>
+<h2>Professional Story</h2>
 
-                <p id="profileBio"></p>
+<p id="profileBio">
+Professional Story coming soon.
+</p>
 
-            </section>
+</section>
 
-            <section class="card" id="contributions">
 
-                <h2>Contributions</h2>
+<section class="card" id="contributions">
 
-                <a class="add-button" href="contribution.html">
-                    + Add Contribution
-                </a>
+<h2>Contributions</h2>
 
-                <div id="contributionList"></div>
+<a class="add-button" href="contribution.html">
++ Add Contribution
+</a>
 
-            </section>
+<div id="contributionList"></div>
 
-            <section class="card">
+</section>
 
-                <h2>Recognition Timeline</h2>
 
-                <div class="timeline-item">
+<section class="card">
 
-                    <div class="timeline-year">
-                        Welcome
-                    </div>
+<h2>Recognition Timeline</h2>
 
-                    <h3>Joined JACI</h3>
+<div class="timeline-item">
 
-                    <p>
-                        Became part of The Home of Knowledge Creators.
-                    </p>
+<div class="timeline-year">
+Welcome
+</div>
 
-                </div>
+<h3>Joined JACI</h3>
 
-                <div class="timeline-item">
+<p>
+Became part of The Home of Knowledge Creators.
+</p>
 
-                    <div class="timeline-year">
-                        Contribution
-                    </div>
+</div>
 
-                    <h3>Build your Professional Story</h3>
+<div class="timeline-item">
 
-                    <p>
-                        Every meaningful contribution becomes part of your professional story.
-                    </p>
+<div class="timeline-year">
+Recognition
+</div>
 
-                </div>
+<h3>Contribution becomes visible</h3>
 
-            </section>
+<p>
+Recognition reflects appreciation for meaningful
+knowledge, ideas, innovation and social contribution.
+</p>
 
-        </div>
+</div>
 
-        <aside>
+</section>
 
-            <section class="card">
+</div>
 
-                <h2>Area of Expertise</h2>
 
-                <div id="expertiseTags"></div>
+<aside>
 
-            </section>
+<section class="card recognition-summary" id="recognition">
 
-            <section class="card">
+<h2>Recognition</h2>
 
-                <h2>Organization</h2>
+<div class="summary-number" id="summaryRecognition">
+0
+</div>
 
-                <p id="profileOrganization"></p>
+<p>
+Total recognitions received across all Contributions.
+</p>
 
-            </section>
+</section>
 
-            <section class="card">
 
-                <h2>JACI Identity</h2>
+<section class="card">
 
-                <p>
-                    A JACI profile is not simply a CV.
-                    It is a living Professional Story built around
-                    knowledge, contribution and recognition.
-                </p>
+<h2>Area of Expertise</h2>
 
-            </section>
+<div id="expertiseTags"></div>
 
-            <section class="card principle">
+</section>
 
-                <h2>JACI Principle</h2>
 
-                <p>
-                    <strong>
-                        Our mission is to make contribution visible.
-                    </strong>
-                </p>
+<section class="card">
 
-            </section>
+<h2>Organization</h2>
 
-            <section class="card">
+<p id="profileOrganization">
+Independent Knowledge Creator
+</p>
 
-                <h2>Profile</h2>
+</section>
 
-                <p>
-                    This profile is currently stored locally in your browser
-                    as part of the JACI demonstration version.
-                </p>
 
-                <a class="edit-button" href="join.html">
-                    Edit Profile
-                </a>
+<section class="card">
 
-            </section>
+<h2>JACI Identity</h2>
 
-        </aside>
+<p>
+A JACI profile is not simply a CV.
+It is a living Professional Story built around
+knowledge, contribution and recognition.
+</p>
 
-    </div>
+</section>
+
+
+<section class="card principle">
+
+<h2>JACI Principle</h2>
+
+<p>
+<strong>
+Contribution is more important than popularity.
+</strong>
+</p>
+
+<br>
+
+<p>
+Our mission is to make contribution visible.
+</p>
+
+</section>
+
+
+<section class="card">
+
+<h2>JACI Score</h2>
+
+<p>
+The JACI Score methodology is currently under development.
+Recognition will be one of its future dimensions.
+</p>
+
+</section>
+
+
+<section class="card">
+
+<h2>Profile</h2>
+
+<a class="edit-button" href="join.html">
+Edit Profile
+</a>
+
+</section>
+
+</aside>
+
+</div>
 
 </main>
 
-</div>
-
-<div id="emptyProfile" style="display:none;">
-
-    <div class="empty-profile">
-
-        <h1>No JACI Profile Yet</h1>
-
-        <p>
-            Create your first JACI Profile and begin building your Professional Story.
-        </p>
-
-        <a class="edit-button" href="join.html">
-            Join JACI
-        </a>
-
-    </div>
-
-</div>
 
 <footer>
 
-    <p><strong>JACI</strong></p>
+<p><strong>JACI</strong></p>
 
-    <p>The Home of Knowledge Creators</p>
+<p>The Home of Knowledge Creators</p>
 
-    <p>Our mission is to make contribution visible.</p>
+<p>Our mission is to make contribution visible.</p>
 
 </footer>
 
+
 <script>
 
-const storedProfile = localStorage.getItem("jaciProfile");
+/* ---------------- PROFILE ---------------- */
+
+const storedProfile =
+localStorage.getItem("jaciProfile");
 
 if(storedProfile){
 
-    const profile = JSON.parse(storedProfile);
+    try{
 
-    document.getElementById("profileName").textContent =
+        const profile =
+        JSON.parse(storedProfile);
+
+        document.getElementById("profileName").textContent =
         profile.name || "Knowledge Creator";
 
-    document.getElementById("profileRole").textContent =
+        document.getElementById("profileRole").textContent =
         profile.creatorType || "Knowledge Creator";
 
-    let meta = [];
+        let meta = [];
 
-    if(profile.country){
-        meta.push(profile.country);
-    }
+        if(profile.country){
+            meta.push(profile.country);
+        }
 
-    if(profile.organization){
-        meta.push(profile.organization);
-    }
+        if(profile.organization){
+            meta.push(profile.organization);
+        }
 
-    document.getElementById("profileMeta").textContent =
+        document.getElementById("profileMeta").textContent =
         meta.length ? meta.join(" · ") : "JACI Member";
 
-    document.getElementById("profileBio").textContent =
+        document.getElementById("profileBio").textContent =
         profile.bio || "Professional Story coming soon.";
 
-    document.getElementById("profileOrganization").textContent =
+        document.getElementById("profileOrganization").textContent =
         profile.organization || "Independent Knowledge Creator";
 
-    const expertiseBox =
+        const expertise =
         document.getElementById("expertiseTags");
 
-    expertiseBox.innerHTML = "";
+        if(profile.field){
 
-    if(profile.field){
+            const tag =
+            document.createElement("span");
 
-        const tag = document.createElement("span");
+            tag.className = "tag";
+            tag.textContent = profile.field;
 
-        tag.className = "tag";
+            expertise.appendChild(tag);
+        }
 
-        tag.textContent = profile.field;
+        if(profile.creatorType){
 
-        expertiseBox.appendChild(tag);
-    }
+            const tag =
+            document.createElement("span");
 
-    if(profile.creatorType){
+            tag.className = "tag";
+            tag.textContent = profile.creatorType;
 
-        const tag = document.createElement("span");
+            expertise.appendChild(tag);
+        }
 
-        tag.className = "tag";
-
-        tag.textContent = profile.creatorType;
-
-        expertiseBox.appendChild(tag);
-    }
-
-    const initials =
+        const initials =
         profile.name
         ? profile.name
             .split(" ")
@@ -653,154 +665,311 @@ if(storedProfile){
             .toUpperCase()
         : "KC";
 
-    document.getElementById("profileAvatar").textContent =
+        document.getElementById("profileAvatar").textContent =
         initials;
 
-}else{
+    }catch(error){
 
-    document.getElementById("profileContent").style.display =
-        "none";
-
-    document.getElementById("emptyProfile").style.display =
-        "block";
+        console.error("Profile data error:",error);
+    }
 }
+
+
+/* ---------------- CONTRIBUTIONS ---------------- */
+
+function getContributions(){
+
+    const stored =
+    localStorage.getItem("jaciContributions");
+
+    if(!stored){
+        return [];
+    }
+
+    try{
+
+        const data =
+        JSON.parse(stored);
+
+        if(Array.isArray(data)){
+            return data;
+        }
+
+        return [];
+
+    }catch(error){
+
+        return [];
+    }
+}
+
+
+function saveContributions(contributions){
+
+    localStorage.setItem(
+        "jaciContributions",
+        JSON.stringify(contributions)
+    );
+}
+
+
+/* ---------------- RECOGNITION ---------------- */
+
+function recognizeContribution(index){
+
+    const contributions =
+    getContributions();
+
+    if(!contributions[index]){
+        return;
+    }
+
+    if(
+        typeof contributions[index].recognitions
+        !== "number"
+    ){
+        contributions[index].recognitions = 0;
+    }
+
+    contributions[index].recognitions += 1;
+
+    saveContributions(contributions);
+
+    renderContributions();
+
+    updateTotalRecognition();
+}
+
+
+function updateTotalRecognition(){
+
+    const contributions =
+    getContributions();
+
+    const total =
+    contributions.reduce(function(sum,item){
+
+        const value =
+        typeof item.recognitions === "number"
+        ? item.recognitions
+        : 0;
+
+        return sum + value;
+
+    },0);
+
+    document.getElementById("totalRecognition").textContent =
+    total;
+
+    document.getElementById("summaryRecognition").textContent =
+    total;
+}
+
+
+/* ---------------- RENDER ---------------- */
 
 function renderContributions(){
 
     const list =
-        document.getElementById("contributionList");
-
-    const stored =
-        localStorage.getItem("jaciContributions");
-
-    if(!stored){
-
-        list.innerHTML =
-        '<div class="empty-contributions">Все още няма добавени Contributions.</div>';
-
-        return;
-    }
+    document.getElementById("contributionList");
 
     const contributions =
-        JSON.parse(stored);
+    getContributions();
 
-    if(!Array.isArray(contributions) || contributions.length === 0){
+    if(contributions.length === 0){
 
         list.innerHTML =
         '<div class="empty-contributions">Все още няма добавени Contributions.</div>';
+
+        updateTotalRecognition();
 
         return;
     }
 
     list.innerHTML = "";
 
-    contributions.forEach(function(item){
+    contributions.forEach(function(item,index){
 
         const wrapper =
-            document.createElement("div");
+        document.createElement("div");
 
         wrapper.className =
-            "contribution";
+        "contribution";
 
-        const type =
-            item.type || "Contribution";
-
-        const title =
-            item.title || "Untitled Contribution";
-
-        const description =
-            item.description || "";
-
-        const year =
-            item.year || "";
-
-        const field =
-            item.field || "";
+        const recognitionCount =
+        typeof item.recognitions === "number"
+        ? item.recognitions
+        : 0;
 
         let meta = [];
 
-        if(year){
-            meta.push(year);
+        if(item.year){
+            meta.push(item.year);
         }
 
-        if(field){
-            meta.push(field);
+        if(item.field){
+            meta.push(item.field);
         }
 
-        wrapper.innerHTML = `
-            <div class="contribution-type">
-                ${escapeHtml(type)}
-            </div>
+        const type =
+        document.createElement("div");
 
-            <h3>
-                ${escapeHtml(title)}
-            </h3>
+        type.className =
+        "contribution-type";
 
-            ${
-                meta.length
-                ? `<div class="contribution-meta">${escapeHtml(meta.join(" · "))}</div>`
-                : ""
+        type.textContent =
+        item.type || "Contribution";
+
+
+        const title =
+        document.createElement("h3");
+
+        title.textContent =
+        item.title || "Untitled Contribution";
+
+
+        wrapper.appendChild(type);
+        wrapper.appendChild(title);
+
+
+        if(meta.length){
+
+            const metadata =
+            document.createElement("div");
+
+            metadata.className =
+            "contribution-meta";
+
+            metadata.textContent =
+            meta.join(" · ");
+
+            wrapper.appendChild(metadata);
+        }
+
+
+        const description =
+        document.createElement("p");
+
+        description.textContent =
+        item.description || "";
+
+        wrapper.appendChild(description);
+
+
+        if(item.link){
+
+            try{
+
+                const url =
+                new URL(item.link);
+
+                if(
+                    url.protocol === "http:" ||
+                    url.protocol === "https:"
+                ){
+
+                    const link =
+                    document.createElement("a");
+
+                    link.className =
+                    "contribution-link";
+
+                    link.href =
+                    url.href;
+
+                    link.target =
+                    "_blank";
+
+                    link.rel =
+                    "noopener noreferrer";
+
+                    link.textContent =
+                    "Open resource ↗";
+
+                    wrapper.appendChild(link);
+                }
+
+            }catch(error){}
+        }
+
+
+        const actions =
+        document.createElement("div");
+
+        actions.className =
+        "actions";
+
+
+        const recognizeButton =
+        document.createElement("button");
+
+        recognizeButton.className =
+        "action";
+
+        recognizeButton.textContent =
+        "Recognize";
+
+        recognizeButton.addEventListener(
+            "click",
+            function(){
+
+                recognizeContribution(index);
+
             }
+        );
 
-            <p>
-                ${escapeHtml(description)}
-            </p>
 
-            ${
-                item.link
-                ? `<a class="contribution-link" href="${safeUrl(item.link)}" target="_blank" rel="noopener noreferrer">Open resource ↗</a>`
-                : ""
-            }
+        const counter =
+        document.createElement("span");
 
-            <div class="actions">
-                <span class="action" onclick="recognize()">Recognize</span>
-                <span class="action action-secondary" onclick="demoAction()">Comment</span>
-                <span class="action action-secondary" onclick="demoAction()">Share</span>
-            </div>
-        `;
+        counter.className =
+        "recognition-count";
+
+        counter.textContent =
+        recognitionCount === 1
+        ? "1 Recognition"
+        : recognitionCount + " Recognitions";
+
+
+        const comment =
+        document.createElement("button");
+
+        comment.className =
+        "action action-secondary";
+
+        comment.textContent =
+        "Comment";
+
+        comment.onclick =
+        demoAction;
+
+
+        const share =
+        document.createElement("button");
+
+        share.className =
+        "action action-secondary";
+
+        share.textContent =
+        "Share";
+
+        share.onclick =
+        demoAction;
+
+
+        actions.appendChild(recognizeButton);
+        actions.appendChild(counter);
+        actions.appendChild(comment);
+        actions.appendChild(share);
+
+        wrapper.appendChild(actions);
 
         list.appendChild(wrapper);
     });
+
+    updateTotalRecognition();
 }
 
-function escapeHtml(value){
-
-    return String(value)
-        .replaceAll("&","&amp;")
-        .replaceAll("<","&lt;")
-        .replaceAll(">","&gt;")
-        .replaceAll('"',"&quot;")
-        .replaceAll("'","&#039;");
-}
-
-function safeUrl(value){
-
-    try{
-
-        const url =
-            new URL(value);
-
-        if(
-            url.protocol === "http:" ||
-            url.protocol === "https:"
-        ){
-            return url.href;
-        }
-
-        return "#";
-
-    }catch{
-
-        return "#";
-    }
-}
-
-function recognize(){
-
-    alert(
-        "Recognition recorded — demonstration version."
-    );
-}
 
 function demoAction(){
 
@@ -808,6 +977,7 @@ function demoAction(){
         "This feature will be activated in a future JACI version."
     );
 }
+
 
 renderContributions();
 
