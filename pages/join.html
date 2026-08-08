@@ -1,1 +1,422 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Join JACI | The Home of Knowledge Creators</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#f4f7fb;
+    color:#111827;
+}
+
+header{
+    background:#0f172a;
+    color:white;
+    padding:20px 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-size:30px;
+    font-weight:800;
+    letter-spacing:1px;
+}
+
+.logo a{
+    color:white;
+    text-decoration:none;
+}
+
+.back{
+    color:white;
+    text-decoration:none;
+    font-weight:600;
+}
+
+.back:hover{
+    color:#93c5fd;
+}
+
+.hero{
+    background:linear-gradient(135deg,#0f172a,#1e3a8a,#2563eb);
+    color:white;
+    text-align:center;
+    padding:70px 25px;
+}
+
+.hero h1{
+    font-size:48px;
+    margin-bottom:15px;
+}
+
+.hero p{
+    max-width:750px;
+    margin:auto;
+    font-size:20px;
+    line-height:1.6;
+}
+
+.container{
+    max-width:850px;
+    margin:50px auto 80px;
+    padding:0 25px;
+}
+
+.join-card{
+    background:white;
+    padding:45px;
+    border-radius:24px;
+    box-shadow:0 12px 35px rgba(0,0,0,.09);
+}
+
+.join-card h2{
+    font-size:30px;
+    margin-bottom:12px;
+}
+
+.intro{
+    color:#64748b;
+    line-height:1.6;
+    margin-bottom:35px;
+}
+
+.form-group{
+    margin-bottom:22px;
+}
+
+label{
+    display:block;
+    font-weight:700;
+    margin-bottom:8px;
+}
+
+input,
+select,
+textarea{
+    width:100%;
+    padding:14px;
+    border:1px solid #cbd5e1;
+    border-radius:10px;
+    font-size:16px;
+    background:white;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+    outline:none;
+    border-color:#2563eb;
+}
+
+textarea{
+    min-height:120px;
+    resize:vertical;
+}
+
+.two-columns{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+button{
+    width:100%;
+    border:none;
+    background:#2563eb;
+    color:white;
+    padding:16px;
+    border-radius:40px;
+    font-size:17px;
+    font-weight:700;
+    cursor:pointer;
+    margin-top:10px;
+}
+
+button:hover{
+    background:#1d4ed8;
+}
+
+.note{
+    background:#eff6ff;
+    padding:18px;
+    border-radius:12px;
+    margin-top:25px;
+    color:#1e3a8a;
+    line-height:1.6;
+}
+
+footer{
+    background:#020617;
+    color:white;
+    text-align:center;
+    padding:40px 20px;
+}
+
+footer p{
+    margin:6px;
+}
+
+@media(max-width:700px){
+
+    header{
+        padding:18px 20px;
+    }
+
+    .hero h1{
+        font-size:38px;
+    }
+
+    .two-columns{
+        grid-template-columns:1fr;
+        gap:0;
+    }
+
+    .join-card{
+        padding:30px 22px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        <a href="../index.html">JACI</a>
+    </div>
+
+    <a class="back" href="../index.html">
+        ← Начало
+    </a>
+
+</header>
+
+
+<section class="hero">
+
+    <h1>Join JACI</h1>
+
+    <p>
+        Присъединете се към общност от хора,
+        които създават знания, идеи и стойност.
+    </p>
+
+</section>
+
+
+<div class="container">
+
+<div class="join-card">
+
+<h2>Create your JACI Profile</h2>
+
+<p class="intro">
+Разкажете ни накратко кой сте и какъв е Вашият професионален принос.
+Това ще бъде основата на Вашата бъдеща Professional Story в JACI.
+</p>
+
+
+<form id="joinForm">
+
+<div class="two-columns">
+
+<div class="form-group">
+
+<label for="name">Име и фамилия</label>
+
+<input
+type="text"
+id="name"
+required
+placeholder="Вашето име">
+
+</div>
+
+
+<div class="form-group">
+
+<label for="country">Държава</label>
+
+<input
+type="text"
+id="country"
+required
+placeholder="Например Bulgaria">
+
+</div>
+
+</div>
+
+
+<div class="form-group">
+
+<label for="email">Имейл</label>
+
+<input
+type="email"
+id="email"
+required
+placeholder="name@example.com">
+
+</div>
+
+
+<div class="form-group">
+
+<label for="organization">Организация</label>
+
+<input
+type="text"
+id="organization"
+placeholder="Университет, компания, организация...">
+
+</div>
+
+
+<div class="form-group">
+
+<label for="creatorType">
+Аз съм...
+</label>
+
+<select id="creatorType" required>
+
+<option value="">Изберете</option>
+
+<option>Researcher</option>
+
+<option>University Lecturer</option>
+
+<option>Teacher</option>
+
+<option>Expert</option>
+
+<option>Innovator</option>
+
+<option>Engineer</option>
+
+<option>Doctor / Medical Professional</option>
+
+<option>Knowledge Creator</option>
+
+<option>Other</option>
+
+</select>
+
+</div>
+
+
+<div class="form-group">
+
+<label for="field">
+Професионална област
+</label>
+
+<input
+type="text"
+id="field"
+required
+placeholder="Например Regional Development">
+
+</div>
+
+
+<div class="form-group">
+
+<label for="bio">
+Кратко представяне
+</label>
+
+<textarea
+id="bio"
+placeholder="Разкажете накратко за своята работа, знания и професионален път."></textarea>
+
+</div>
+
+
+<div class="form-group">
+
+<label for="contribution">
+С какво допринасяте?
+</label>
+
+<textarea
+id="contribution"
+required
+placeholder="Опишете идея, знание, проект, изследване, преподавателска или друга дейност, с която създавате стойност."></textarea>
+
+</div>
+
+
+<button type="submit">
+Create my JACI Profile
+</button>
+
+</form>
+
+
+<div class="note">
+
+<strong>JACI Principle</strong><br><br>
+
+Много хора, които създават знания и стойност,
+не получават достатъчно видимост, признание или възможности,
+пропорционални на своя принос.
+
+<br><br>
+
+<strong>Our mission is to make contribution visible.</strong>
+
+</div>
+
+</div>
+
+</div>
+
+
+<footer>
+
+<p><strong>JACI</strong></p>
+
+<p>The Home of Knowledge Creators</p>
+
+<p>Our mission is to make contribution visible.</p>
+
+</footer>
+
+
+<script>
+
+document.getElementById("joinForm").addEventListener("submit", function(event){
+
+    event.preventDefault();
+
+    const name = document.getElementById("name").value;
+
+    alert(
+        "Добре дошли в JACI, " +
+        name +
+        "! Вашият профил е подготвен в демонстрационната версия."
+    );
+
+});
+
+</script>
+
+</body>
+</html>
