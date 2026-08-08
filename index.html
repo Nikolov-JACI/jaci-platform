@@ -142,10 +142,6 @@ nav a:hover{
   text-align:center;
 }
 
-.mission-inner h2{
-  margin-bottom:20px;
-}
-
 .mission-inner p{
   font-size:22px;
   line-height:1.8;
@@ -448,7 +444,7 @@ footer p{
     JACI exists to change that.
   </p>
 
-  <button class="btn" onclick="joinJaci()">Присъедини се</button>
+  <a class="btn" href="pages/join.html">Присъедини се</a>
 
   <button class="btn btn-blue" onclick="goToCreators()">
     Открий Knowledge Creators
@@ -702,11 +698,6 @@ footer p{
 </footer>
 
 <script>
-
-function joinJaci(){
-  alert("Добре дошли в JACI! Регистрацията ще бъде добавена в следваща версия.");
-  document.getElementById("founder").scrollIntoView({behavior:"smooth"});
-}
 
 function goToCreators(){
   document.getElementById("creators").scrollIntoView({behavior:"smooth"});
