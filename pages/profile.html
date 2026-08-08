@@ -163,9 +163,24 @@ nav a:hover{
     font-weight:700;
 }
 
+.add-button{
+    display:inline-block;
+    text-decoration:none;
+    background:#2563eb;
+    color:white;
+    padding:12px 20px;
+    border-radius:30px;
+    font-weight:700;
+    margin-bottom:20px;
+}
+
+.add-button:hover{
+    background:#1d4ed8;
+}
+
 .contribution{
     border-top:1px solid #e5e7eb;
-    padding:20px 0;
+    padding:22px 0;
 }
 
 .contribution:first-of-type{
@@ -178,14 +193,30 @@ nav a:hover{
     font-weight:700;
     font-size:14px;
     margin-bottom:7px;
+    text-transform:uppercase;
+}
+
+.contribution-meta{
+    color:#64748b;
+    font-size:14px;
+    margin-bottom:10px;
 }
 
 .contribution h3{
     margin-bottom:8px;
+    font-size:20px;
 }
 
 .contribution p{
     font-size:16px;
+}
+
+.contribution-link{
+    display:inline-block;
+    margin-top:10px;
+    color:#2563eb;
+    text-decoration:none;
+    font-weight:700;
 }
 
 .actions{
@@ -207,6 +238,15 @@ nav a:hover{
 .action-secondary{
     background:#e2e8f0;
     color:#0f172a;
+}
+
+.empty-contributions{
+    background:#f8fafc;
+    border:1px dashed #cbd5e1;
+    padding:25px;
+    border-radius:14px;
+    text-align:center;
+    color:#64748b;
 }
 
 .timeline-item{
@@ -405,35 +445,11 @@ footer p{
 
                 <h2>Contributions</h2>
 
-                <div class="contribution">
+                <a class="add-button" href="contribution.html">
+                    + Add Contribution
+                </a>
 
-                    <div class="contribution-type">
-                        FIRST CONTRIBUTION
-                    </div>
-
-                    <h3>
-                        My contribution to knowledge
-                    </h3>
-
-                    <p id="profileContribution"></p>
-
-                    <div class="actions">
-
-                        <span class="action" onclick="recognize()">
-                            Recognize
-                        </span>
-
-                        <span class="action action-secondary" onclick="demoAction()">
-                            Comment
-                        </span>
-
-                        <span class="action action-secondary" onclick="demoAction()">
-                            Share
-                        </span>
-
-                    </div>
-
-                </div>
+                <div id="contributionList"></div>
 
             </section>
 
@@ -458,14 +474,13 @@ footer p{
                 <div class="timeline-item">
 
                     <div class="timeline-year">
-                        Next
+                        Contribution
                     </div>
 
                     <h3>Build your Professional Story</h3>
 
                     <p>
-                        Add knowledge, projects, publications,
-                        teaching activities and other meaningful contributions.
+                        Every meaningful contribution becomes part of your professional story.
                     </p>
 
                 </div>
@@ -597,9 +612,6 @@ if(storedProfile){
     document.getElementById("profileBio").textContent =
         profile.bio || "Professional Story coming soon.";
 
-    document.getElementById("profileContribution").textContent =
-        profile.contribution || "Contribution coming soon.";
-
     document.getElementById("profileOrganization").textContent =
         profile.organization || "Independent Knowledge Creator";
 
@@ -653,6 +665,136 @@ if(storedProfile){
         "block";
 }
 
+function renderContributions(){
+
+    const list =
+        document.getElementById("contributionList");
+
+    const stored =
+        localStorage.getItem("jaciContributions");
+
+    if(!stored){
+
+        list.innerHTML =
+        '<div class="empty-contributions">Все още няма добавени Contributions.</div>';
+
+        return;
+    }
+
+    const contributions =
+        JSON.parse(stored);
+
+    if(!Array.isArray(contributions) || contributions.length === 0){
+
+        list.innerHTML =
+        '<div class="empty-contributions">Все още няма добавени Contributions.</div>';
+
+        return;
+    }
+
+    list.innerHTML = "";
+
+    contributions.forEach(function(item){
+
+        const wrapper =
+            document.createElement("div");
+
+        wrapper.className =
+            "contribution";
+
+        const type =
+            item.type || "Contribution";
+
+        const title =
+            item.title || "Untitled Contribution";
+
+        const description =
+            item.description || "";
+
+        const year =
+            item.year || "";
+
+        const field =
+            item.field || "";
+
+        let meta = [];
+
+        if(year){
+            meta.push(year);
+        }
+
+        if(field){
+            meta.push(field);
+        }
+
+        wrapper.innerHTML = `
+            <div class="contribution-type">
+                ${escapeHtml(type)}
+            </div>
+
+            <h3>
+                ${escapeHtml(title)}
+            </h3>
+
+            ${
+                meta.length
+                ? `<div class="contribution-meta">${escapeHtml(meta.join(" · "))}</div>`
+                : ""
+            }
+
+            <p>
+                ${escapeHtml(description)}
+            </p>
+
+            ${
+                item.link
+                ? `<a class="contribution-link" href="${safeUrl(item.link)}" target="_blank" rel="noopener noreferrer">Open resource ↗</a>`
+                : ""
+            }
+
+            <div class="actions">
+                <span class="action" onclick="recognize()">Recognize</span>
+                <span class="action action-secondary" onclick="demoAction()">Comment</span>
+                <span class="action action-secondary" onclick="demoAction()">Share</span>
+            </div>
+        `;
+
+        list.appendChild(wrapper);
+    });
+}
+
+function escapeHtml(value){
+
+    return String(value)
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
+}
+
+function safeUrl(value){
+
+    try{
+
+        const url =
+            new URL(value);
+
+        if(
+            url.protocol === "http:" ||
+            url.protocol === "https:"
+        ){
+            return url.href;
+        }
+
+        return "#";
+
+    }catch{
+
+        return "#";
+    }
+}
+
 function recognize(){
 
     alert(
@@ -666,6 +808,8 @@ function demoAction(){
         "This feature will be activated in a future JACI version."
     );
 }
+
+renderContributions();
 
 </script>
 
