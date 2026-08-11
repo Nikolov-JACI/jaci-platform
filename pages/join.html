@@ -328,8 +328,17 @@ footer p{
         <div class="form-group">
           <label for="email">Имейл</label>
           <input type="email" id="email" required placeholder="name@example.com">
-        </div>
+        </div> 
+<div class="form-group">
+  <label for="password">Парола</label>
 
+  <input
+    type="password"
+    id="password"
+    required
+    minlength="8"
+    placeholder="Минимум 8 символа">
+</div>
         <div class="form-group">
           <label for="organization">Организация</label>
           <input type="text" id="organization" placeholder="Университет, компания или организация">
@@ -453,6 +462,7 @@ footer p{
 const nameInput = document.getElementById("name");
 const countryInput = document.getElementById("country");
 const emailInput = document.getElementById("email");
+const passwordInput = document.getElementById("password");
 const organizationInput = document.getElementById("organization");
 const creatorTypeInput = document.getElementById("creatorType");
 const fieldInput = document.getElementById("field");
@@ -522,10 +532,10 @@ function updatePreview(){
   element.addEventListener("change", updatePreview);
 });
 
-document.getElementById("joinForm").addEventListener("submit", function(event){
+document.getElementById("joinForm").addEventListener("submit", async function(event){
 
   event.preventDefault();
-
+const password = passwordInput.value;
   const profileData = {
     name: nameInput.value.trim(),
     country: countryInput.value.trim(),
@@ -536,7 +546,15 @@ document.getElementById("joinForm").addEventListener("submit", function(event){
     bio: bioInput.value.trim(),
     contribution: contributionInput.value.trim()
   };
+const { data, error } = await jaciSupabase.auth.signUp({
+  email: emailInput.value.trim(),
+  password: password
+});
 
+if (error) {
+  alert("Registration error: " + error.message);
+  return;
+}
   localStorage.setItem(
     "jaciProfile",
     JSON.stringify(profileData)
@@ -546,6 +564,16 @@ document.getElementById("joinForm").addEventListener("submit", function(event){
 });
 
 </script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+const SUPABASE_URL = "https://ntdcxhfyghfwdozkykoc.supabase.co";
 
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_gUIbtDtYvX3OynDUfRW4tQ_mCTJD_XR";
+
+const jaciSupabase = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_PUBLISHABLE_KEY
+);
+</script>
 </body>
 </html>
