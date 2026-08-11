@@ -548,7 +548,10 @@ const password = passwordInput.value;
   };
 const { data, error } = await jaciSupabase.auth.signUp({
   email: emailInput.value.trim(),
-  password: password
+  password: password,
+  options: {
+    emailRedirectTo: "https://nikolov-jaci.github.io/jaci-platform/pages/profile.html"
+  }
 });
 
 if (error) {
