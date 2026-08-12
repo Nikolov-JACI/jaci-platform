@@ -693,6 +693,16 @@ const jaciSupabase = window.supabase.createClient(
     SUPABASE_URL,
     SUPABASE_PUBLISHABLE_KEY
 );
+    // JACI AUTH GUARD
+async function protectJaciProfile() {
+    const { data: { session } } = await jaciSupabase.auth.getSession();
+
+    if (!session) {
+        window.location.href = "login.html";
+    }
+}
+
+protectJaciProfile();
 /* =========================
    PROFILE
 ========================= */
