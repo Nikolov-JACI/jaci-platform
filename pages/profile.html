@@ -682,10 +682,17 @@ Our mission is to make contribution visible.
 </p>
 
 </footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 
 <script>
+const SUPABASE_URL =  "https://ntdcxhfyghfwdozkykoc.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_gUIbtDtYvX3OynDUfRW4tQ_mCTJD_XR";
 
+const jaciSupabase = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+);
 /* =========================
    PROFILE
 ========================= */
@@ -1215,6 +1222,27 @@ renderProfile();
 renderContributions();
 updateRecognitionSummary();
 
+    // ==============================
+// JACI LOGOUT
+// ==============================
+
+const logoutBtn = document.getElementById("logoutBtn");
+
+if (logoutBtn) {
+    logoutBtn.addEventListener("click", async function (event) {
+        event.preventDefault();
+
+        const { error } = await jaciSupabase.auth.signOut();
+
+        if (error) {
+            console.error("JACI logout error:", error);
+            alert("Logout failed. Please try again.");
+            return;
+        }
+
+        window.location.href = "login.html";
+    });
+}
 </script>
 
 </body>
