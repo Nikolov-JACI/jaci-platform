@@ -707,28 +707,34 @@ protectJaciProfile();
    PROFILE
 ========================= */
 
-function getProfile(){
+async function getProfile() {
+    const { data: { user }, error: userError } =
+        await jaciSupabase.auth.getUser();
 
-    const stored =
-        localStorage.getItem("jaciProfile");
-
-    if(!stored){
+    if (userError || !user) {
         return null;
     }
 
-    try{
-        return JSON.parse(stored);
-    }
-    catch(error){
+    const { data: profile, error: profileError } =
+        await jaciSupabase
+            .from("profiles")
+            .select("*")
+            .eq("id", user.id)
+            .single();
+
+    if (profileError) {
+        console.error("Profile load error:", profileError);
         return null;
     }
+
+    return profile;
 }
 
 
-function renderProfile(){
+async function renderProfile(){
 
     const profile =
-        getProfile();
+    await getProfile();
 
     if(!profile){
 
@@ -746,12 +752,12 @@ function renderProfile(){
     document
     .getElementById("profileName")
     .textContent =
-        profile.name || "Knowledge Creator";
+        profile.full_name || "Knowledge Creator";
 
     document
     .getElementById("profileRole")
     .textContent =
-        profile.creatorType || "Knowledge Creator";
+        profile.creator_type || "Knowledge Creator";
 
     let meta = [];
 
@@ -799,21 +805,21 @@ function renderProfile(){
         expertise.appendChild(tag);
     }
 
-    if(profile.creatorType){
+    if(profile.creator_type){
 
         const tag =
             document.createElement("span");
 
         tag.className = "tag";
-        tag.textContent = profile.creatorType;
+        tag.textContent = profile.creator_type;
 
         expertise.appendChild(tag);
     }
 
 
     const initials =
-        profile.name
-        ? profile.name
+        profile.full_name
+        ? profile.full_name
             .split(" ")
             .filter(Boolean)
             .slice(0,2)
