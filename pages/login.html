@@ -1,1 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <title>Login | JACI</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f5f7fa;
+      color: #172033;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 30px 20px;
+    }
+
+    .login-card {
+      width: 100%;
+      max-width: 460px;
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 42px;
+      box-shadow: 0 15px 45px rgba(0, 0, 0, 0.08);
+    }
+
+    .brand {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .brand h1 {
+      margin: 0;
+      font-size: 34px;
+      letter-spacing: 1px;
+    }
+
+    .brand p {
+      margin: 8px 0 0;
+      color: #697386;
+      font-size: 15px;
+    }
+
+    h2 {
+      margin: 0 0 8px;
+      text-align: center;
+      font-size: 24px;
+    }
+
+    .intro {
+      margin: 0 0 28px;
+      text-align: center;
+      color: #697386;
+      line-height: 1.5;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px 15px;
+      border: 1px solid #d8dee8;
+      border-radius: 9px;
+      font-size: 16px;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: #172033;
+    }
+
+    button {
+      width: 100%;
+      border: 0;
+      border-radius: 9px;
+      padding: 15px;
+      background: #172033;
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button:hover {
+      opacity: 0.92;
+    }
+
+    button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    #message {
+      display: none;
+      margin-top: 18px;
+      padding: 12px 14px;
+      border-radius: 8px;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    .message-error {
+      display: block !important;
+      background: #fff1f1;
+      color: #a12626;
+    }
+
+    .message-success {
+      display: block !important;
+      background: #eefaf2;
+      color: #24733d;
+    }
+
+    .links {
+      margin-top: 26px;
+      text-align: center;
+      font-size: 14px;
+      color: #697386;
+    }
+
+    .links a {
+      color: #172033;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .links a:hover {
+      text-decoration: underline;
+    }
+
+    .back {
+      margin-top: 18px;
+      text-align: center;
+    }
+
+    .back a {
+      color: #697386;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    @media (max-width: 520px) {
+      .login-card {
+        padding: 30px 22px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="page">
+
+    <section class="login-card">
+
+      <div class="brand">
+        <h1>JACI</h1>
+        <p>The Home of Knowledge Creators</p>
+      </div>
+
+      <h2>Welcome back</h2>
+
+      <p class="intro">
+        Sign in to continue to your JACI profile.
+      </p>
+
+      <form id="loginForm">
+
+        <div class="form-group">
+          <label for="email">Email</label>
+
+          <input
+            type="email"
+            id="email"
+            required
+            autocomplete="email"
+            placeholder="name@example.com"
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+
+          <input
+            type="password"
+            id="password"
+            required
+            autocomplete="current-password"
+            placeholder="Your password"
+          >
+        </div>
+
+        <button type="submit" id="loginButton">
+          Login to JACI
+        </button>
+
+        <div id="message"></div>
+
+      </form>
+
+      <div class="links">
+        Don't have a JACI account?
+        <a href="join.html">Join JACI</a>
+      </div>
+
+      <div class="back">
+        <a href="../index.html">← Back to JACI</a>
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <script>
+
+    const SUPABASE_URL =
+      "https://ntdcxhfyghfwdozkykoc.supabase.co";
+
+    const SUPABASE_PUBLISHABLE_KEY =
+      "sb_publishable_gUIbtDtYvX3OynDUfRW4tQ_mCTJD_XR";
+
+
+    const jaciSupabase = window.supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_PUBLISHABLE_KEY
+    );
+
+
+    const loginForm =
+      document.getElementById("loginForm");
+
+    const emailInput =
+      document.getElementById("email");
+
+    const passwordInput =
+      document.getElementById("password");
+
+    const loginButton =
+      document.getElementById("loginButton");
+
+    const message =
+      document.getElementById("message");
+
+
+    function showMessage(text, type) {
+
+      message.textContent = text;
+
+      message.className =
+        type === "success"
+          ? "message-success"
+          : "message-error";
+    }
+
+
+    loginForm.addEventListener(
+      "submit",
+      async function(event) {
+
+        event.preventDefault();
+
+        message.style.display = "none";
+        message.className = "";
+
+        loginButton.disabled = true;
+        loginButton.textContent = "Signing in...";
+
+
+        const email =
+          emailInput.value.trim();
+
+        const password =
+          passwordInput.value;
+
+
+        try {
+
+          const { data, error } =
+            await jaciSupabase.auth.signInWithPassword({
+              email: email,
+              password: password
+            });
+
+
+          if (error) {
+
+            showMessage(
+              "Login failed: " + error.message,
+              "error"
+            );
+
+            return;
+          }
+
+
+          if (!data.user) {
+
+            showMessage(
+              "JACI could not sign you in.",
+              "error"
+            );
+
+            return;
+          }
+
+
+          showMessage(
+            "Login successful. Opening your JACI profile...",
+            "success"
+          );
+
+
+          setTimeout(function() {
+
+            window.location.href = "profile.html";
+
+          }, 700);
+
+
+        } catch (error) {
+
+          showMessage(
+            "Something went wrong. Please try again.",
+            "error"
+          );
+
+          console.error(error);
+
+
+        } finally {
+
+          loginButton.disabled = false;
+          loginButton.textContent = "Login to JACI";
+
+        }
+
+      }
+    );
+
+
+    async function checkExistingSession() {
+
+      const { data } =
+        await jaciSupabase.auth.getSession();
+
+      if (data.session) {
+
+        window.location.href = "profile.html";
+
+      }
+
+    }
+
+
+    checkExistingSession();
+
+  </script>
+
+</body>
+</html>
