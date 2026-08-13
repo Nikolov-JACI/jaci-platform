@@ -777,10 +777,11 @@ async function renderProfile(){
         : "JACI Member";
 
     document
-    .getElementById("profileBio")
-    .textContent =
-        profile.bio ||
-        "Professional Story coming soon.";
+    document
+  .getElementById("profileBio")
+  .textContent =
+    profile.professional_story ||
+    "Professional Story coming soon.";
 
     document
     .getElementById("profileOrganization")
@@ -794,13 +795,13 @@ async function renderProfile(){
 
     expertise.innerHTML = "";
 
-    if(profile.field){
+    if(profile.expertise){
 
         const tag =
             document.createElement("span");
 
         tag.className = "tag";
-        tag.textContent = profile.field;
+        tag.textContent = profile.expertise;
 
         expertise.appendChild(tag);
     }
