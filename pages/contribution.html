@@ -366,8 +366,16 @@ footer p{
   <p>Our mission is to make contribution visible.</p>
 
 </footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
+const SUPABASE_URL = "https://ntdcxhfyghfwdozkykoc.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_gUIbtDtYvX30ynDUfRW4tQ_mCTJD_XR";
+
+const jaciSupabase = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+);
 
 document
 .getElementById("contributionForm")
