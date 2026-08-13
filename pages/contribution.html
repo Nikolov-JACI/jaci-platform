@@ -378,64 +378,45 @@ const jaciSupabase = window.supabase.createClient(
 );
 
 document
-.getElementById("contributionForm")
-.addEventListener("submit", function(event){
+    .getElementById("contributionForm")
+    .addEventListener("submit", async function(event){
 
-  event.preventDefault();
+        event.preventDefault();
 
-  const contribution = {
+        const { data: { user }, error: userError } =
+            await jaciSupabase.auth.getUser();
 
-    type:
-      document.getElementById("type").value,
+        if (userError || !user) {
+            alert("Please log in to add a Contribution.");
+            window.location.href = "login.html";
+            return;
+        }
 
-    title:
-      document.getElementById("title").value.trim(),
+        const contribution = {
+            user_id: user.id,
+            type: document.getElementById("type").value,
+            title: document.getElementById("title").value.trim(),
+            year: document.getElementById("year").value,
+            field: document.getElementById("field").value.trim(),
+            description: document.getElementById("description").value.trim(),
+            link: document.getElementById("link").value.trim()
+        };
 
-    year:
-      document.getElementById("year").value,
+        const { error } =
+            await jaciSupabase
+                .from("contributions")
+                .insert(contribution);
 
-    field:
-      document.getElementById("field").value.trim(),
+        if (error) {
+            console.error("Contribution insert error:", error);
+            alert("There was a problem saving the Contribution.");
+            return;
+        }
 
-    description:
-      document.getElementById("description").value.trim(),
+        alert("Your Contribution has been added to JACI.");
 
-    link:
-      document.getElementById("link").value.trim(),
-
-    createdAt:
-      new Date().toISOString()
-
-  };
-
-  let contributions = [];
-
-  const stored =
-    localStorage.getItem("jaciContributions");
-
-  if(stored){
-
-    contributions =
-      JSON.parse(stored);
-
-  }
-
-  contributions.unshift(contribution);
-
-  localStorage.setItem(
-    "jaciContributions",
-    JSON.stringify(contributions)
-  );
-
-  alert(
-    "Вашият Contribution е запазен в демонстрационната версия на JACI."
-  );
-
-  window.location.href =
-    "profile.html";
-
-});
-
+        window.location.href = "profile.html";
+    });
 </script>
 
 </body>
