@@ -875,31 +875,29 @@ function recognizeCreator(){
    CONTRIBUTIONS
 ========================= */
 
-function getContributions(){
 
-    const stored =
-        localStorage.getItem(
-            "jaciContributions"
-        );
+    
+        async function getContributions() {
+    const { data: { user }, error: userError } =
+        await jaciSupabase.auth.getUser();
 
-    if(!stored){
+    if (userError || !user) {
         return [];
     }
 
-    try{
+    const { data, error } =
+        await jaciSupabase
+            .from("contributions")
+            .select("*")
+            .eq("user_id", user.id)
+            .order("created_at", { ascending: false });
 
-        const data =
-            JSON.parse(stored);
-
-        return Array.isArray(data)
-            ? data
-            : [];
-
-    }
-    catch(error){
-
+    if (error) {
+        console.error("Contributions load error:", error);
         return [];
     }
+
+    return data || [];
 }
 
 
@@ -912,10 +910,10 @@ function saveContributions(data){
 }
 
 
-function recognizeContribution(index){
+async function recognizeContribution(index){
 
-    const contributions =
-        getContributions();
+   const contributions =
+    await getContributions();
 
     if(!contributions[index]){
         return;
@@ -1005,15 +1003,15 @@ function updateRecognitionSummary(){
    RENDER CONTRIBUTIONS
 ========================= */
 
-function renderContributions(){
+async function renderContributions(){
 
     const list =
         document.getElementById(
             "contributionList"
         );
 
-    const contributions =
-        getContributions();
+   const contributions =
+    await getContributions();
 
     list.innerHTML = "";
 
